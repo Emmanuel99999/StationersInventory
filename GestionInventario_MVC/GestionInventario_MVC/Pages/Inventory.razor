@@ -1,41 +1,34 @@
 ﻿@page "/inventory"
 @inject IProductService ProductService
-@using System.Diagnostics
+@inject ISnackbar Snackbar
 
-<PageTitle>Gestión de Inventario</PageTitle>
+@* @using GestionInventario_MVC.Exceptions NO es necesario aquí si solo la capturas *@
+
+@* <PageTitle>Gestión de Inventario</PageTitle> *@
 
 <MudText Typo="Typo.h4" GutterBottom="true">Gestión de Inventario</MudText>
 
 <MudPaper Class="pa-4 mb-4" Elevation="1">
-    <EditForm Model="@newProduct" OnValidSubmit="@HandleValidSubmit">
+    <EditForm Model="@newProduct" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
         <DataAnnotationsValidator />
 
         <MudGrid Spacing="2">
+            @* --- Campos del formulario (igual que antes, con ValidationMessage) --- *@
             <MudItem xs="12" sm="6">
-                <MudTextField @bind-Value="newProduct.Name"
-                              Label="Nombre del producto"
-                              Variant="Variant.Outlined"
-                              For="@(() => newProduct.Name)" />
+                <MudTextField @bind-Value="newProduct.Name" Label="Nombre del producto" Variant="Variant.Outlined" For="@(() => newProduct.Name)" />
+                <ValidationMessage For="@(() => newProduct.Name)" />
             </MudItem>
             <MudItem xs="12" sm="6">
-                <MudTextField @bind-Value="newProduct.Category"
-                              Label="Categoría"
-                              Variant="Variant.Outlined"
-                              For="@(() => newProduct.Category)" />
+                <MudTextField @bind-Value="newProduct.Category" Label="Categoría" Variant="Variant.Outlined" For="@(() => newProduct.Category)" />
+                <ValidationMessage For="@(() => newProduct.Category)" />
             </MudItem>
             <MudItem xs="12" sm="6">
-                @* --- SINTAXIS CORREGIDA --- *@
-                <MudNumericField T="int" @bind-Value="newProduct.Stock"
-                                 Label="Stock"
-                                 Variant="Variant.Outlined"
-                                 For="@(() => newProduct.Stock)" />
-                @* --- FIN CORRECCIÓN --- *@
+                <MudNumericField T="int" @bind-Value="newProduct.Stock" Label="Stock" Variant="Variant.Outlined" For="@(() => newProduct.Stock)" />
+                <ValidationMessage For="@(() => newProduct.Stock)" />
             </MudItem>
             <MudItem xs="12" sm="6">
-                <MudTextField @bind-Value="newProduct.Barcode"
-                              Label="Código de barras"
-                              Variant="Variant.Outlined"
-                              For="@(() => newProduct.Barcode)" />
+                <MudTextField @bind-Value="newProduct.Barcode" Label="Código de barras" Variant="Variant.Outlined" For="@(() => newProduct.Barcode)" />
+                <ValidationMessage For="@(() => newProduct.Barcode)" />
             </MudItem>
             <MudItem xs="12" Class="mt-4">
                 <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Guardar</MudButton>
@@ -45,11 +38,12 @@
     </EditForm>
 </MudPaper>
 
-@* Las tablas y el @code block permanecen igual que en la versión anterior donde se añadieron los Console.WriteLine *@
+@* --- Tablas (igual que antes) --- *@
 <MudText Typo="Typo.h5" GutterBottom="true">Productos</MudText>
 <MudPaper Class="mb-4" Elevation="1">
     <MudTable Items="@products" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
-        <HeaderContent>
+        @* ... Contenido de la tabla de productos sin cambios ... *@
+         <HeaderContent>
             <MudTh>Nombre</MudTh>
             <MudTh>Categoría</MudTh>
             <MudTh>Stock</MudTh>
@@ -67,36 +61,37 @@
             </MudTd>
         </RowTemplate>
         <PagerContent>
-            <MudTablePager />
+             <MudTablePager />
         </PagerContent>
-        <NoRecordsContent>
-            <MudText>No hay productos para mostrar.</MudText>
-        </NoRecordsContent>
+         <NoRecordsContent>
+             <MudText>No hay productos para mostrar.</MudText>
+         </NoRecordsContent>
     </MudTable>
 </MudPaper>
 
 <MudText Typo="Typo.h5" GutterBottom="true">Historial de Movimientos</MudText>
 <MudPaper Class="mb-4" Elevation="1">
-    <MudTable Items="@movements" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
-        <HeaderContent>
-            <MudTh>Fecha</MudTh>
-            <MudTh>Producto ID</MudTh>
-            <MudTh>Cantidad</MudTh>
-            <MudTh>Tipo</MudTh>
-        </HeaderContent>
-        <RowTemplate>
-            <MudTd DataLabel="Fecha">@context.Date.ToShortDateString()</MudTd>
-            <MudTd DataLabel="Producto ID">@context.ProductId</MudTd>
-            <MudTd DataLabel="Cantidad">@context.Quantity</MudTd>
-            <MudTd DataLabel="Tipo">@context.Type</MudTd>
-        </RowTemplate>
-        <PagerContent>
-            <MudTablePager />
+ <MudTable Items="@movements" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+        @* ... Contenido de la tabla de movimientos sin cambios ... *@
+     <HeaderContent>
+         <MudTh>Fecha</MudTh>
+         <MudTh>Producto ID</MudTh>
+         <MudTh>Cantidad</MudTh>
+         <MudTh>Tipo</MudTh>
+     </HeaderContent>
+     <RowTemplate>
+         <MudTd DataLabel="Fecha">@context.Date.ToShortDateString()</MudTd>
+         <MudTd DataLabel="Producto ID">@context.ProductId</MudTd>
+         <MudTd DataLabel="Cantidad">@context.Quantity</MudTd>
+         <MudTd DataLabel="Tipo">@context.Type</MudTd>
+     </RowTemplate>
+      <PagerContent>
+             <MudTablePager />
         </PagerContent>
         <NoRecordsContent>
-            <MudText>No hay movimientos para mostrar.</MudText>
-        </NoRecordsContent>
-    </MudTable>
+             <MudText>No hay movimientos para mostrar.</MudText>
+         </NoRecordsContent>
+ </MudTable>
 </MudPaper>
 
 
@@ -107,66 +102,65 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine("Inventory.razor: OnInitializedAsync iniciando.");
         await LoadData();
-        Console.WriteLine("Inventory.razor: OnInitializedAsync completado.");
     }
 
     private async Task LoadData()
     {
         try
         {
-            Console.WriteLine("Inventory.razor: LoadData iniciando.");
             products = await ProductService.GetProductsAsync() ?? new List<Product>();
-            movements = await ProductService.GetInventoryMovementsAsync(0) ?? new List<InventoryMovement>();
-            Console.WriteLine($"Inventory.razor: LoadData completado. Productos: {products.Count()}, Movimientos: {movements.Count()}");
+            movements = await ProductService.GetInventoryMovementsAsync(0) ?? new List<InventoryMovement>(); // Carga todos los movimientos
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error en LoadData: {ex.Message}");
+            Snackbar.Add($"Error al cargar datos: {ex.Message}", Severity.Error); // Notifica al usuario
         }
-        StateHasChanged();
+        StateHasChanged(); // Necesario si LoadData se llama fuera de OnInitializedAsync
     }
 
     private async Task HandleValidSubmit()
     {
-        Console.WriteLine("HandleValidSubmit: Iniciando...");
-        Console.WriteLine($"Valores a guardar: ID={newProduct.Id}, Nombre='{newProduct.Name}', Categoria='{newProduct.Category}', Stock={newProduct.Stock}, Barcode='{newProduct.Barcode}'");
-
-        if (string.IsNullOrWhiteSpace(newProduct.Name) || string.IsNullOrWhiteSpace(newProduct.Category))
-        {
-            Console.WriteLine("HandleValidSubmit: Error - Nombre y Categoría son requeridos.");
-            return;
-        }
-
         try
         {
             if (newProduct.Id == 0)
             {
-                Console.WriteLine("HandleValidSubmit: Llamando a AddProductAsync...");
                 await ProductService.AddProductAsync(newProduct);
-                Console.WriteLine("HandleValidSubmit: AddProductAsync completado.");
+                Snackbar.Add("Producto añadido con éxito.", Severity.Success); // Mensaje de éxito
             }
             else
             {
-                Console.WriteLine($"HandleValidSubmit: Llamando a UpdateProductAsync para ID: {newProduct.Id}...");
                 await ProductService.UpdateProductAsync(newProduct);
-                Console.WriteLine("HandleValidSubmit: UpdateProductAsync completado.");
+                Snackbar.Add("Producto actualizado con éxito.", Severity.Success); // Mensaje de éxito
             }
 
-            newProduct = new Product();
-            Console.WriteLine("HandleValidSubmit: Formulario limpiado.");
-            await LoadData();
+            newProduct = new Product(); // Limpia formulario
+            await LoadData(); // Recarga datos y actualiza la UI a través de StateHasChanged dentro de LoadData
         }
+        // --- INICIO: Capturar Excepción de Duplicado ---
+        catch (DuplicateProductException dex)
+        {
+            // Muestra el mensaje específico de la excepción al usuario
+            Snackbar.Add(dex.Message, Severity.Warning);
+        }
+        // --- FIN: Capturar Excepción de Duplicado ---
         catch (Exception ex)
         {
+            // Muestra un error genérico para otras excepciones
             Console.WriteLine($"HandleValidSubmit: EXCEPCIÓN al guardar: {ex.ToString()}");
+            Snackbar.Add($"Error al guardar: {ex.Message}", Severity.Error);
         }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        // El usuario ya ve los errores en los campos gracias a ValidationMessage/Summary
+        Snackbar.Add("Por favor corrija los errores de validación.", Severity.Warning);
     }
 
     private void EditProduct(Product product)
     {
-        Console.WriteLine($"EditProduct: Editando producto ID: {product.Id}, Nombre: {product.Name}");
         newProduct = new Product
             {
                 Id = product.Id,
@@ -179,16 +173,17 @@
 
     private async Task DeleteProduct(int id)
     {
-        Console.WriteLine($"DeleteProduct: Intentando eliminar producto ID: {id}");
+        // Aquí podrías añadir un diálogo de confirmación usando IDialogService si quieres
         try
         {
             await ProductService.DeleteProductAsync(id);
-            Console.WriteLine($"DeleteProduct: Producto ID: {id} eliminado.");
+            Snackbar.Add("Producto eliminado.", Severity.Info); // Mensaje informativo
             await LoadData();
         }
         catch (Exception ex)
         {
             Console.WriteLine($"DeleteProduct: EXCEPCIÓN al eliminar ID: {id}. Error: {ex.Message}");
+            Snackbar.Add($"Error al eliminar: {ex.Message}", Severity.Error);
         }
     }
 }
