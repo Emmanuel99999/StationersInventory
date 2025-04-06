@@ -1,0 +1,8 @@
+C:\Projects\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.csproj.AssemblyReference.cache
+C:\Projects\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.AssemblyInfoInputs.cache
+C:\Projects\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.AssemblyInfo.cs
+C:\Projects\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.csproj.CoreCompileInputs.cache
+C:\Projects\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Projects\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.RazorAssemblyInfo.cache
+C:\Projects\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.RazorAssemblyInfo.cs
