@@ -2,120 +2,123 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GestionInventario_MVC.Data;
 using GestionInventario_MVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace GestionInventario_MVC.Services
 {
     public class ProductService : IProductService
     {
-        private readonly List<Product> _products = new();
-        private readonly List<InventoryMovement> _movements = new();
-        private int _nextProductId = 1;
+        private readonly AppDbContext _context;
 
-        public Task<IEnumerable<Product>> GetProductsAsync()
+        public ProductService(AppDbContext context)
         {
-            return Task.FromResult(_products.AsEnumerable());
+            _context = context;
         }
 
-        // --- INICIO: CORRECCIÓN NULLABILITY ---
-        public Task<Product?> GetProductByIdAsync(int id) // Cambiado a Product?
+        public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            var product = _products.FirstOrDefault(p => p.Id == id);
-            return Task.FromResult(product); // Ahora es seguro devolver product (que puede ser null)
+            return await _context.Products.ToListAsync();
+        }
+
+        public async Task<Product?> GetProductByIdAsync(int id)
+        {
+            return await _context.Products.FindAsync(id);
         }
         // --- FIN: CORRECCIÓN NULLABILITY ---
 
-        public Task AddProductAsync(Product product)
+        public async Task AddProductAsync(Product product)
         {
             if (!string.IsNullOrWhiteSpace(product.Barcode) &&
-                _products.Any(p => p.Barcode.Equals(product.Barcode, StringComparison.OrdinalIgnoreCase)))
+                await _context.Products.AnyAsync(p => p.Barcode == product.Barcode))
             {
                 throw new DuplicateProductException($"Ya existe un producto con el código de barras '{product.Barcode}'.");
             }
-            if (_products.Any(p => p.Name.Equals(product.Name, StringComparison.OrdinalIgnoreCase)))
+
+            if (await _context.Products.AnyAsync(p => p.Name == product.Name))
             {
                 throw new DuplicateProductException($"Ya existe un producto con el nombre '{product.Name}'.");
             }
 
-            product.Id = _nextProductId++;
-            _products.Add(product);
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
 
-            _movements.Add(new InventoryMovement
+            var movement = new InventoryMovement
             {
-                Date = DateTime.Now,
                 ProductId = product.Id,
                 Quantity = product.Stock,
-                Type = "Entrada Inicial"
-            });
-            return Task.CompletedTask;
+                Type = "Entrada Inicial",
+                Date = DateTime.Now
+            };
+
+            _context.InventoryMovements.Add(movement);
+            await _context.SaveChangesAsync();
         }
 
-        public Task UpdateProductAsync(Product product)
+        public async Task UpdateProductAsync(Product product)
         {
             if (!string.IsNullOrWhiteSpace(product.Barcode) &&
-                _products.Any(p => p.Id != product.Id && p.Barcode.Equals(product.Barcode, StringComparison.OrdinalIgnoreCase)))
+                await _context.Products.AnyAsync(p => p.Id != product.Id && p.Barcode == product.Barcode))
             {
                 throw new DuplicateProductException($"Ya existe OTRO producto con el código de barras '{product.Barcode}'.");
             }
-            if (_products.Any(p => p.Id != product.Id && p.Name.Equals(product.Name, StringComparison.OrdinalIgnoreCase)))
+
+            if (await _context.Products.AnyAsync(p => p.Id != product.Id && p.Name == product.Name))
             {
                 throw new DuplicateProductException($"Ya existe OTRO producto con el nombre '{product.Name}'.");
             }
 
-            var existingProduct = _products.FirstOrDefault(p => p.Id == product.Id);
-            if (existingProduct != null)
+            var existingProduct = await _context.Products.FindAsync(product.Id);
+            if (existingProduct == null) return;
+
+            if (existingProduct.Stock != product.Stock)
             {
-                if (product.Stock != existingProduct.Stock)
+                var movement = new InventoryMovement
                 {
-                    _movements.Add(new InventoryMovement
-                    {
-                        Date = DateTime.Now,
-                        ProductId = product.Id,
-                        Quantity = product.Stock - existingProduct.Stock,
-                        Type = (product.Stock > existingProduct.Stock) ? "Ajuste Entrada" : "Ajuste Salida"
-                    });
-                }
-                existingProduct.Name = product.Name;
-                existingProduct.Category = product.Category;
-                existingProduct.Stock = product.Stock;
-                existingProduct.Barcode = product.Barcode;
+                    ProductId = product.Id,
+                    Quantity = product.Stock - existingProduct.Stock,
+                    Type = product.Stock > existingProduct.Stock ? "Ajuste Entrada" : "Ajuste Salida",
+                    Date = DateTime.Now
+                };
+                _context.InventoryMovements.Add(movement);
             }
-            else
-            {
-                Console.WriteLine($"ADVERTENCIA: Se intentó actualizar producto con ID {product.Id} pero no se encontró.");
-                // Opcional: throw new KeyNotFoundException($"No se encontró producto con ID {product.Id} para actualizar.");
-            }
-            return Task.CompletedTask;
+
+            existingProduct.Name = product.Name;
+            existingProduct.Category = product.Category;
+            existingProduct.Stock = product.Stock;
+            existingProduct.Barcode = product.Barcode;
+
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteProductAsync(int id)
+        public async Task DeleteProductAsync(int id)
         {
-            var product = _products.FirstOrDefault(p => p.Id == id);
-            if (product != null)
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) return;
+
+            var movement = new InventoryMovement
             {
-                _movements.Add(new InventoryMovement
-                {
-                    Date = DateTime.Now,
-                    ProductId = id,
-                    Quantity = -product.Stock,
-                    Type = "Eliminación"
-                });
-                _products.Remove(product);
-            }
-            return Task.CompletedTask;
+                ProductId = id,
+                Quantity = -product.Stock,
+                Type = "Eliminación",
+                Date = DateTime.Now
+            };
+            _context.InventoryMovements.Add(movement);
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<InventoryMovement>> GetInventoryMovementsAsync(int productId = 0)
+        public async Task<IEnumerable<InventoryMovement>> GetInventoryMovementsAsync(int productId = 0)
         {
             if (productId > 0)
-            {
-                return Task.FromResult(_movements.Where(m => m.ProductId == productId).AsEnumerable());
-            }
-            else
-            {
-                return Task.FromResult(_movements.AsEnumerable());
-            }
+                return await _context.InventoryMovements
+                    .Where(m => m.ProductId == productId)
+                    .ToListAsync();
+
+            return await _context.InventoryMovements.ToListAsync();
         }
     }
 }

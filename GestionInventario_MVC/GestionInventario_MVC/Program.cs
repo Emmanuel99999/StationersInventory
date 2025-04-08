@@ -1,5 +1,7 @@
 using GestionInventario_MVC.Services;
-using MudBlazor.Services; 
+using MudBlazor.Services;
+using Microsoft.EntityFrameworkCore;
+using GestionInventario_MVC.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +10,13 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 
-builder.Services.AddMudServices(); 
+builder.Services.AddMudServices();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//conexión de ef core con sql server
+
+
 
 
 builder.Services.AddScoped<IProductService, ProductService>();
