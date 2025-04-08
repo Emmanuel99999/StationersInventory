@@ -1,9 +1,104 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿﻿@{
+    ViewData["Title"] = "Home";
 }
+@*#072AC8  (Azul oscuro)
+#1E96FC  (Azul medio)
+#A2D6F9  (Azul claro)
+#FCF300  (Amarillo brillante)
+#FFC600  (Amarillo cálido)\
+#FFD700 (Amarillo mas oscuro)
+*@
+<style>
+    body {
+        background: linear-gradient(135deg, #072AC8 0%, #1E96FC 50%, #A2D6F9 100%);
+        min-height: 100vh;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    .hero {
+        background: none;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+    .custom-button {
+        background: linear-gradient(to right, #FFD700, #FCF300, #FFC600);
+        color: #072AC8 !important;
+        border-radius: 10px;
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        box-shadow: 0 4px 8px rgba(252, 243, 0, 0.3);
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+        .custom-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(252, 243, 0, 0.4);
+            color: #072AC8 !important;
+        }
+
+    .features {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .feature-box {
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px #072AC8;
+        background-color: #1E96FC;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .feature-box:hover {
+            transform: scale(1.05);
+        }
+</style>
+
+<div class="hero text-center">
+    <h1 class="display-4">📦 Stationer's Inventory</h1>
+    <p class="lead">Powerful stock management for stationery shops</p>
+    <a class="btn btn-success custom-button" href="/Inventario/Create"> Go to Inventory</a>
+
+
+</div>
+
+<div class="row features">
+    <div class="col-md-4">
+        <div class="feature-box p-4">
+            <h3 style="color:white;">📊 Stock Tracking</h3>
+            <p style="color:#FCF300">Keep track of your items in real-time.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-box p-4">
+            <h3 style="color:white;">⚡ Fast & Efficient</h3>
+            <p style="color:#FCF300">Quickly update your inventory with ease.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-box p-4">
+            <h3 style="color:white;">🔒 Secure System</h3>
+            <p style="color:#FCF300 ">Only authorized users can make changes.</p>
+        </div>
+    </div>
+</div>
 </div>
