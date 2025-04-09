@@ -7,14 +7,14 @@ Aplicación web para gestión de inventarios desarrollada con Blazor (MudBlazor)
 
 ## 📜 Índice
 
-1. [Características Principales](#user-content-características-principales)
-2. [Stack Tecnológico](#user-content-stack-tecnológico)
-3. [Primeros Pasos](#user-content-primeros-pasos)
-   - [Requisitos](#user-content-requisitos)
-   - [Instalación](#user-content-instalación)
-4. [Iniciar el Proyecto](#user-content-cómo-iniciar)
-5. [Documentación Técnica](ARCHITECTURE.md)
-6. [Guía de Desarrollo](DEVELOPMENT_GUIDE.md)
+- [📦 Sistema de Gestión de Inventario - MVC/Blazor](#-sistema-de-gestión-de-inventario---mvcblazor)
+  - [📜 Índice](#-índice)
+  - [🌟 Características Principales](#-características-principales)
+  - [🛠 Stack Tecnológico](#-stack-tecnológico)
+  - [🚀 Primeros Pasos {#sección-3}](#-primeros-pasos-sección-3)
+    - [Requisitos {#subsección-3-1}](#requisitos-subsección-3-1)
+    - [Instalación {#subsección-3-2}](#instalación-subsección-3-2)
+  - [🚀 Cómo Iniciar {#sección-4}](#-cómo-iniciar-sección-4)
 
 ## 🌟 Características Principales
 - **CRUD completo** de productos con validaciones
@@ -31,9 +31,9 @@ Aplicación web para gestión de inventarios desarrollada con Blazor (MudBlazor)
 | Base de datos    | SQL Server               | -       |
 | Validaciones     | DataAnnotations          | -       |
 
-## 🚀 Primeros Pasos
+## 🚀 Primeros Pasos {#sección-3}
 
-### Requisitos
+### Requisitos {#subsección-3-1}
 - [.NET 8 SDK](https://dotnet.microsoft.com/download)
 - IDE:
   - **Visual Studio 2022** (Recomendado)
@@ -41,19 +41,15 @@ Aplicación web para gestión de inventarios desarrollada con Blazor (MudBlazor)
     - C# Dev Kit
     - Blazor WASM Tools
 
-### Instalación
+### Instalación {#subsección-3-2}
 1. **Clonar repositorio**:
    ```bash
    git clone https://github.com/tu-usuario/gestion-inventario.git
    cd gestion-inventario
 
-## 🚀 Cómo Iniciar
+## 🚀 Cómo Iniciar {#sección-4}
 1. **Visual Studio 2022**:
    ```bash
    dotnet restore
-
-## 🚀 Abrir en navegador
-3. **compilar proyecto**
-  ```bash
-    dotnet run
+   dotnet run
 
