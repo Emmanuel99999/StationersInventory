@@ -49,7 +49,7 @@
    cd gestion-inventario
 
 ## 🚀 Cómo Iniciar
-2. **Restaurar paquetes NuGet en tu IDE**:
+2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "
     dotnet restore
 
 ## 🚀 Abrir en navegador
