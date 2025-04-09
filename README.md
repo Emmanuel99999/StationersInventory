@@ -7,16 +7,14 @@ Aplicación web para gestión de inventarios desarrollada con Blazor (MudBlazor)
 
 ## 📜 Índice
 
-- [📦 Sistema de Gestión de Inventario - MVC/Blazor](#-sistema-de-gestión-de-inventario---mvcblazor)
-  - [📜 Índice](#-índice)
-  - [🌟 Características Principales](#-características-principales)
-  - [🛠 Stack Tecnológico](#-stack-tecnológico)
-  - [🚀 Primeros Pasos](#-primeros-pasos)
-    - [Requisitos](#requisitos)
-    - [Instalación](#instalación)
-  - [🚀 Cómo Iniciar](#-cómo-iniciar)
-    - [2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "](#2---visual-studio-2022-abrir-el-proyecto-en-el-ide-y-ejecutar-)
-  - [🚀 Abrir en navegador](#-abrir-en-navegador)
+1. [Características Principales](#user-content-características-principales)
+2. [Stack Tecnológico](#user-content-stack-tecnológico)
+3. [Primeros Pasos](#user-content-primeros-pasos)
+   - [Requisitos](#user-content-requisitos)
+   - [Instalación](#user-content-instalación)
+4. [Iniciar el Proyecto](#user-content-cómo-iniciar)
+5. [Documentación Técnica](ARCHITECTURE.md)
+6. [Guía de Desarrollo](DEVELOPMENT_GUIDE.md)
 
 ## 🌟 Características Principales
 - **CRUD completo** de productos con validaciones
@@ -50,8 +48,9 @@ Aplicación web para gestión de inventarios desarrollada con Blazor (MudBlazor)
    cd gestion-inventario
 
 ## 🚀 Cómo Iniciar
-### 2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "
-    dotnet restore
+1. **Visual Studio 2022**:
+   ```bash
+   dotnet restore
 
 ## 🚀 Abrir en navegador
 3. **compilar proyecto**
