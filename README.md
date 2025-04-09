@@ -1,15 +1,14 @@
 # 📦 Sistema de Gestión de Inventario - MVC/Blazor
-
+Aplicación web para gestión de inventarios desarrollada con Blazor (MudBlazor) en frontend y ASP.NET Core MVC en backend.
 <div align="center">
   <img src="./docs/images/system-preview.png" alt="Vista previa" width="800">
 </div>
 
-## 📜 Índice
+
 ## 📜 Índice
 
 - [📦 Sistema de Gestión de Inventario - MVC/Blazor](#-sistema-de-gestión-de-inventario---mvcblazor)
   - [📜 Índice](#-índice)
-  - [📜 Índice](#-índice-1)
   - [🌟 Características Principales](#-características-principales)
   - [🛠 Stack Tecnológico](#-stack-tecnológico)
   - [🚀 Primeros Pasos](#-primeros-pasos)
@@ -58,6 +57,7 @@
 3. **compilar proyecto**
   ```bash
     dotnet run
+
 
 
 
