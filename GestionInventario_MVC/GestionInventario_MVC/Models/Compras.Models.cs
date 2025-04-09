@@ -1,16 +1,24 @@
-﻿namespace GestionInventario_MVC.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GestionInventario_MVC.Models
 {
     // Models/Proveedor.cs
     public class Proveedor
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "El nombre del proveedor es obligatorio.")]
         public string Nombre { get; set; } = string.Empty;
+        [Required(ErrorMessage = "La dirección es obligatoria.")]
         public string Direccion { get; set; } = string.Empty;
+        [Required(ErrorMessage = "El teléfono es obligatorio.")]
+        [Phone(ErrorMessage = "El número de teléfono no tiene un formato válido.")]
         public string Telefono { get; set; } = string.Empty;
+        [Required(ErrorMessage = "El correo electrónico es obligatorio.")]
+        [EmailAddress(ErrorMessage = "El correo electrónico no tiene un formato válido.")]
         public string Email { get; set; } = string.Empty;
     }
 
-
+    /// clases para implementar a mayor profundidad luego del primer reporte
     // Models/Producto.cs
     public class Producto
 {

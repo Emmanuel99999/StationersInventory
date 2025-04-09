@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using GestionInventario_MVC.Data;
 using Microsoft.EntityFrameworkCore;
-
+//TODO separar las clases en diferentes archivos, ya que hay muchos modelos en uno solo
 namespace GestionInventario_MVC.Services
 {
     public class CompraService(AppDbContext context) : ICompraService

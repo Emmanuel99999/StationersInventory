@@ -37,8 +37,9 @@
         <ValidationSummary />
     </EditForm>
 </MudPaper>
-
-@* --- Tablas (igual que antes) --- *@
+@* TODO añadir filtros *@
+@* TODO orden por defecto de más reciente a más viejo *@
+@* --- Tablas (igual que antes) --- añadir filtrado *@
 <MudText Typo="Typo.h5" GutterBottom="true">Productos</MudText>
 <MudPaper Class="mb-4" Elevation="1">
     <MudTable Items="@products" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
@@ -181,7 +182,6 @@
 
     private async Task DeleteProduct(int id)
     {
-        // Aquí podrías añadir un diálogo de confirmación usando IDialogService si quieres
         try
         {
             await ProductService.DeleteProductAsync(id);
