@@ -5,9 +5,11 @@
 </div>
 
 ## 📜 Índice
+## 📜 Índice
 
 - [📦 Sistema de Gestión de Inventario - MVC/Blazor](#-sistema-de-gestión-de-inventario---mvcblazor)
   - [📜 Índice](#-índice)
+  - [📜 Índice](#-índice-1)
   - [🌟 Características Principales](#-características-principales)
   - [🛠 Stack Tecnológico](#-stack-tecnológico)
   - [🚀 Primeros Pasos](#-primeros-pasos)
@@ -16,7 +18,6 @@
   - [🚀 Cómo Iniciar](#-cómo-iniciar)
     - [2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "](#2---visual-studio-2022-abrir-el-proyecto-en-el-ide-y-ejecutar-)
   - [🚀 Abrir en navegador](#-abrir-en-navegador)
-
 
 ## 🌟 Características Principales
 - **CRUD completo** de productos con validaciones
@@ -57,5 +58,6 @@
 3. **compilar proyecto**
   ```bash
     dotnet run
+
 
 
