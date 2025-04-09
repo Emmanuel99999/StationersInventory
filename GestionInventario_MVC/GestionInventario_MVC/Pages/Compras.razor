@@ -1,0 +1,1130 @@
+﻿@page "/compras"
+@inject ICompraService CompraService
+@inject ISnackbar Snackbar
+
+<MudText Typo="Typo.h4" GutterBottom="true">Gestión de Compras</MudText>
+
+<!-- REGISTRO DE PROVEEDORES -->
+<MudText Typo="Typo.h5" GutterBottom="true" Class="mt-4">Registro de Proveedores</MudText>
+<MudPaper Class="pa-4 mb-4" Elevation="1">
+    <EditForm Model="@newProveedor" OnValidSubmit="@HandleProveedorSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid Spacing="2">
+            <MudItem xs="12" sm="6">
+                <MudTextField @bind-Value="newProveedor.Nombre" Label="Nombre" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudTextField @bind-Value="newProveedor.Direccion" Label="Dirección" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudTextField @bind-Value="newProveedor.Telefono" Label="Teléfono" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudTextField @bind-Value="newProveedor.Email" Label="Email" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" Class="mt-4">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">
+                    @(newProveedor.Id == 0 ? "Registrar Proveedor" : "Actualizar Proveedor")
+                </MudButton>
+                @if (newProveedor.Id != 0)
+                {
+                    <MudButton OnClick="@(() => ResetProveedor())" Variant="Variant.Filled" Color="Color.Secondary" Class="ml-2">
+                        Cancelar Edición
+                    </MudButton>
+                }
+            </MudItem>
+        </MudGrid>
+        <ValidationSummary />
+    </EditForm>
+</MudPaper>
+
+<!-- Tabla de Proveedores -->
+<MudText Typo="Typo.h5" GutterBottom="true">Lista de Proveedores</MudText>
+<MudPaper Class="mb-4" Elevation="1">
+    <MudTable Items="@proveedores" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+        <HeaderContent>
+            <MudTh Style="width: 10%; text-align: center;">ID</MudTh>
+            <MudTh Style="width: 20%; text-align: center;">Nombre</MudTh>
+            <MudTh Style="width: 20%; text-align: center;">Dirección</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Teléfono</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Email</MudTh>
+            <MudTh Style="width: 20%; text-align: center;">Acciones</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID" Style="text-align: center;">@context.Id</MudTd>
+            <MudTd DataLabel="Nombre" Style="text-align: center;">@context.Nombre</MudTd>
+            <MudTd DataLabel="Dirección" Style="text-align: center;">@context.Direccion</MudTd>
+            <MudTd DataLabel="Teléfono" Style="text-align: center;">@context.Telefono</MudTd>
+            <MudTd DataLabel="Email" Style="text-align: center;">@context.Email</MudTd>
+            <MudTd DataLabel="Acciones" Style="text-align: center;">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="() => EditProveedor(context)" Color="Color.Primary" Title="Editar" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="async () => await DeleteProveedor(context.Id)" Color="Color.Error" Title="Eliminar" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+        <NoRecordsContent>
+            <MudText>No hay proveedores registrados.</MudText>
+        </NoRecordsContent>
+    </MudTable>
+</MudPaper>
+
+<!-- ÓRDENES DE COMPRA Y RECEPCIÓN DE MERCANCÍA (JUNTOS) -->
+<MudDivider DividerType="DividerType.FullWidth" Class="my-6" />
+<MudText Typo="Typo.h4" GutterBottom="true" Class="mt-4">Gestión de Órdenes y Recepción</MudText>
+
+<!-- Formulario para agregar o editar órdenes de compra -->
+<MudText Typo="Typo.h5" GutterBottom="true">Nueva Orden de Compra</MudText>
+<MudPaper Class="pa-4 mb-4" Elevation="1">
+    <EditForm Model="@newOrdenCompra" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+        <DataAnnotationsValidator />
+
+        <MudGrid Spacing="2">
+            <MudItem xs="12" sm="6">
+                <MudSelect T="int" Label="Proveedor" @bind-Value="newOrdenCompra.ProveedorId" Variant="Variant.Outlined">
+                    @foreach (var proveedor in proveedores)
+                    {
+                        <MudSelectItem Value="@proveedor.Id">@proveedor.Nombre</MudSelectItem>
+                    }
+                </MudSelect>
+                <ValidationMessage For="@(() => newOrdenCompra.ProveedorId)" />
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudDatePicker @bind-Value="newOrdenCompra.FechaOrden" Label="Fecha de Orden" DateFormat="dd/MM/yyyy" Editable="true" Placeholder="Seleccione una fecha" DateChanged="@((DateTime? date) => OnDateChanged(date))" AutoClose="true" DisableToolbar="false" Variant="Variant.Outlined" />
+                <ValidationMessage For="@(() => newOrdenCompra.FechaOrden)" />
+            </MudItem>
+
+            <!-- Nuevos campos para productos -->
+            <MudItem xs="12">
+                <MudText Typo="Typo.h6" GutterBottom="true" Class="mt-2">Productos</MudText>
+                <MudDivider />
+            </MudItem>
+
+            <MudItem xs="12" sm="4">
+                <MudTextField @bind-Value="nuevoProducto.Nombre" Label="Nombre del Producto" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudNumericField @bind-Value="nuevoProducto.Precio" Label="Precio" Variant="Variant.Outlined" Format="F2" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudNumericField @bind-Value="nuevoProducto.Cantidad" Label="Cantidad" Variant="Variant.Outlined" />
+            </MudItem>
+
+            <MudItem xs="12" Class="d-flex justify-center mt-2">
+                <MudButton OnClick="AgregarProducto" Variant="Variant.Filled" Color="Color.Secondary">Agregar Producto</MudButton>
+            </MudItem>
+
+            @if (newOrdenCompra.Productos.Any())
+            {
+                <MudItem xs="12" Class="mt-4">
+                    <MudTable Items="@newOrdenCompra.Productos" Hover="true" Breakpoint="Breakpoint.Sm" Dense="true">
+                        <HeaderContent>
+                            <MudTh>Nombre</MudTh>
+                            <MudTh>Precio</MudTh>
+                            <MudTh>Cantidad</MudTh>
+                            <MudTh>Acciones</MudTh>
+                        </HeaderContent>
+                        <RowTemplate Context="producto">
+                            <MudTd DataLabel="Nombre">@producto.Nombre</MudTd>
+                            <MudTd DataLabel="Precio">@producto.Precio.ToString("C")</MudTd>
+                            <MudTd DataLabel="Cantidad">@producto.Cantidad</MudTd>
+                            <MudTd DataLabel="Acciones">
+                                <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="() => EliminarProducto(producto)" Color="Color.Error" />
+                            </MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudItem>
+            }
+
+            <MudItem xs="12" Class="mt-4">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Guardar Orden</MudButton>
+            </MudItem>
+        </MudGrid>
+        <ValidationSummary />
+    </EditForm>
+</MudPaper>
+
+<!-- Tabla de Órdenes de Compra -->
+<MudText Typo="Typo.h5" GutterBottom="true">Órdenes de Compra</MudText>
+<MudPaper Class="mb-4" Elevation="1">
+    <MudTable Items="@ordenesCompra" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+        <HeaderContent>
+            <MudTh Style="width: 10%; text-align: center;">ID</MudTh>
+            <MudTh Style="width: 20%; text-align: center;">Proveedor</MudTh>
+            <MudTh Style="width: 20%; text-align: center;">Fecha</MudTh>
+            <MudTh Style="width: 20%; text-align: center;">Productos</MudTh>
+            <MudTh Style="width: 30%; text-align: center;">Acciones</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID" Style="text-align: center;">@context.Id</MudTd>
+            <MudTd DataLabel="Proveedor" Style="text-align: center;">
+                @(ObtenerNombreProveedor(context.ProveedorId))
+            </MudTd>
+            <MudTd DataLabel="Fecha" Style="text-align: center;">
+                @(context.FechaOrden.Year > 1 ? context.FechaOrden.ToString("dd/MM/yyyy") : "Sin Fecha")
+            </MudTd>
+            <MudTd DataLabel="Productos" Style="text-align: center;">
+                @context.Productos.Count
+            </MudTd>
+            <MudTd DataLabel="Acciones" Style="text-align: center;">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="() => EditOrdenCompra(context)" Color="Color.Primary" Title="Editar" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="async () => await DeleteOrdenCompra(context.Id)" Color="Color.Error" Title="Eliminar" />
+                <MudIconButton Icon="@Icons.Material.Filled.AddBox" Size="Size.Small" OnClick="() => CrearRecepcionDesdeOrden(context)" Color="Color.Success" Title="Crear Recepción" />
+                <MudIconButton Icon="@Icons.Material.Filled.Visibility" Size="Size.Small" OnClick="() => MostrarDetallesOrden(context)" Color="Color.Info" Title="Ver Detalles" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+        <NoRecordsContent>
+            <MudText>No hay órdenes de compra para mostrar.</MudText>
+        </NoRecordsContent>
+    </MudTable>
+</MudPaper>
+
+<!-- Formulario para Recepción de Mercancía -->
+<MudText Typo="Typo.h5" GutterBottom="true" Class="mt-4">Nueva Recepción de Mercancía</MudText>
+<MudPaper Class="pa-4 mb-4" Elevation="1">
+    <EditForm Model="@newRecepcionMercancia" OnValidSubmit="@HandleRecepcionSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid Spacing="2">
+            <MudItem xs="12" sm="6">
+                <MudSelect T="int" Label="Orden de Compra" @bind-Value="newRecepcionMercancia.OrdenCompraId" Variant="Variant.Outlined">
+                    @foreach (var orden in ordenesCompra)
+                    {
+                        <MudSelectItem Value="@orden.Id">Orden #@orden.Id (@ObtenerNombreProveedor(orden.ProveedorId))</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudDatePicker @bind-Value="newRecepcionMercancia.FechaRecepcion" Label="Fecha de Recepción" DateFormat="dd/MM/yyyy" Editable="true" Placeholder="Seleccione una fecha" DateChanged="@((DateTime? date) => OnFechaRecepcionChanged(date))" AutoClose="true" DisableToolbar="false" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" Class="mt-4">
+                <MudText>
+                    <strong>Nota:</strong> Los productos se importarán automáticamente de la orden de compra seleccionada.
+                </MudText>
+            </MudItem>
+            <MudItem xs="12" Class="mt-4">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">
+                    @(newRecepcionMercancia.Id == 0 ? "Registrar Recepción" : "Actualizar Recepción")
+                </MudButton>
+                @if (newRecepcionMercancia.Id != 0)
+                {
+                    <MudButton OnClick="@(() => ResetRecepcionMercancia())" Variant="Variant.Filled" Color="Color.Secondary" Class="ml-2">
+                        Cancelar Edición
+                    </MudButton>
+                }
+            </MudItem>
+        </MudGrid>
+        <ValidationSummary />
+    </EditForm>
+</MudPaper>
+
+<!-- Tabla de Recepción de Mercancía -->
+<MudText Typo="Typo.h5" GutterBottom="true">Recepción de Mercancía</MudText>
+<MudPaper Class="mb-4" Elevation="1">
+    <MudTable Items="@recepcionMercancias" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+        <HeaderContent>
+            <MudTh Style="width: 10%; text-align: center;">ID</MudTh>
+            <MudTh Style="width: 30%; text-align: center;">Orden de Compra</MudTh>
+            <MudTh Style="width: 30%; text-align: center;">Fecha</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Productos</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Acciones</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID" Style="text-align: center;">@context.Id</MudTd>
+            <MudTd DataLabel="Orden de Compra" Style="text-align: center;">
+                @context.OrdenCompraId
+            </MudTd>
+            <MudTd DataLabel="Fecha" Style="text-align: center;">
+                @(context.FechaRecepcion.Year > 1 ? context.FechaRecepcion.ToString("dd/MM/yyyy") : "Sin Fecha")
+            </MudTd>
+            <MudTd DataLabel="Productos" Style="text-align: center;">
+                @context.Productos.Count
+            </MudTd>
+            <MudTd DataLabel="Acciones" Style="text-align: center;">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="() => EditRecepcionMercancia(context)" Color="Color.Primary" Title="Editar" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="async () => await DeleteRecepcionMercancia(context.Id)" Color="Color.Error" Title="Eliminar" />
+                <MudIconButton Icon="@Icons.Material.Filled.Visibility" Size="Size.Small" OnClick="() => MostrarDetallesRecepcion(context)" Color="Color.Info" Title="Ver Detalles" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+        <NoRecordsContent>
+            <MudText>No hay recepciones de mercancía para mostrar.</MudText>
+        </NoRecordsContent>
+    </MudTable>
+</MudPaper>
+
+<!-- OTRAS SECCIONES -->
+<MudDivider DividerType="DividerType.FullWidth" Class="my-6" />
+
+<!-- Formulario para Control de Crédito y Plazos de Pago -->
+<MudText Typo="Typo.h5" GutterBottom="true" Class="mt-4">Control de Crédito y Plazos de Pago</MudText>
+<MudPaper Class="pa-4 mb-4" Elevation="1">
+    <EditForm Model="@newControlCredito" OnValidSubmit="@HandleControlCreditoSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid Spacing="2">
+            <MudItem xs="12" sm="6">
+                <MudSelect T="int" Label="Proveedor" @bind-Value="newControlCredito.ProveedorId" Variant="Variant.Outlined">
+                    @foreach (var proveedor in proveedores)
+                    {
+                        <MudSelectItem Value="@proveedor.Id">@proveedor.Nombre</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudNumericField @bind-Value="newControlCredito.CreditoDisponible" Label="Crédito Disponible" Variant="Variant.Outlined" Format="F2" />
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudDatePicker @bind-Value="newControlCredito.FechaVencimiento" Label="Fecha de Vencimiento" DateFormat="dd/MM/yyyy" Editable="true" Placeholder="Seleccione una fecha" DateChanged="@((DateTime? date) => OnFechaVencimientoChanged(date))" AutoClose="true" DisableToolbar="false" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" Class="mt-4">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">
+                    @(newControlCredito.Id == 0 ? "Registrar Control de Crédito" : "Actualizar Control de Crédito")
+                </MudButton>
+                @if (newControlCredito.Id != 0)
+                {
+                    <MudButton OnClick="@(() => ResetControlCredito())" Variant="Variant.Filled" Color="Color.Secondary" Class="ml-2">
+                        Cancelar Edición
+                    </MudButton>
+                }
+            </MudItem>
+        </MudGrid>
+        <ValidationSummary />
+    </EditForm>
+</MudPaper>
+
+<!-- Tabla de Control de Crédito -->
+<MudText Typo="Typo.h5" GutterBottom="true">Control de Crédito</MudText>
+<MudPaper Class="mb-4" Elevation="1">
+    <MudTable Items="@controlCreditos" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+        <HeaderContent>
+            <MudTh Style="width: 10%; text-align: center;">ID</MudTh>
+            <MudTh Style="width: 25%; text-align: center;">Proveedor</MudTh>
+            <MudTh Style="width: 25%; text-align: center;">Crédito Disponible</MudTh>
+            <MudTh Style="width: 25%; text-align: center;">Fecha de Vencimiento</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Acciones</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID" Style="text-align: center;">@context.Id</MudTd>
+            <MudTd DataLabel="Proveedor" Style="text-align: center;">
+                @ObtenerNombreProveedor(context.ProveedorId)
+            </MudTd>
+            <MudTd DataLabel="Crédito Disponible" Style="text-align: center;">@context.CreditoDisponible.ToString("C")</MudTd>
+            <MudTd DataLabel="Fecha de Vencimiento" Style="text-align: center;">
+                @(context.FechaVencimiento.Year > 1 ? context.FechaVencimiento.ToString("dd/MM/yyyy") : "Sin Fecha")
+            </MudTd>
+            <MudTd DataLabel="Acciones" Style="text-align: center;">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="() => EditControlCredito(context)" Color="Color.Primary" Title="Editar" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="async () => await DeleteControlCredito(context.Id)" Color="Color.Error" Title="Eliminar" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+        <NoRecordsContent>
+            <MudText>No hay datos de crédito para mostrar.</MudText>
+        </NoRecordsContent>
+    </MudTable>
+</MudPaper>
+
+<!-- Formulario para Pagos a Proveedores -->
+<MudText Typo="Typo.h5" GutterBottom="true" Class="mt-4">Registro de Pagos a Proveedores</MudText>
+<MudPaper Class="pa-4 mb-4" Elevation="1">
+    <EditForm Model="@newPagoProveedor" OnValidSubmit="@HandlePagoProveedorSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid Spacing="2">
+            <MudItem xs="12" sm="6">
+                <MudSelect T="int" Label="Proveedor" @bind-Value="newPagoProveedor.ProveedorId" Variant="Variant.Outlined">
+                    @foreach (var proveedor in proveedores)
+                    {
+                        <MudSelectItem Value="@proveedor.Id">@proveedor.Nombre</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudNumericField @bind-Value="newPagoProveedor.Monto" Label="Monto" Variant="Variant.Outlined" Format="F2" />
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudDatePicker @bind-Value="newPagoProveedor.FechaPago" Label="Fecha de Pago" DateFormat="dd/MM/yyyy" Editable="true" Placeholder="Seleccione una fecha" DateChanged="@((DateTime? date) => OnFechaPagoChanged(date))" AutoClose="true" DisableToolbar="false" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" Class="mt-4">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">
+                    @(newPagoProveedor.Id == 0 ? "Registrar Pago" : "Actualizar Pago")
+                </MudButton>
+                @if (newPagoProveedor.Id != 0)
+                {
+                    <MudButton OnClick="@(() => ResetPagoProveedor())" Variant="Variant.Filled" Color="Color.Secondary" Class="ml-2">
+                        Cancelar Edición
+                    </MudButton>
+                }
+            </MudItem>
+        </MudGrid>
+        <ValidationSummary />
+    </EditForm>
+</MudPaper>
+
+<!-- Tabla de Pagos a Proveedores -->
+<MudText Typo="Typo.h5" GutterBottom="true">Pagos a Proveedores</MudText>
+<MudPaper Class="mb-4" Elevation="1">
+    <MudTable Items="@pagosProveedores" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+        <HeaderContent>
+            <MudTh Style="width: 10%; text-align: center;">ID</MudTh>
+            <MudTh Style="width: 30%; text-align: center;">Proveedor</MudTh>
+            <MudTh Style="width: 30%; text-align: center;">Monto</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Fecha de Pago</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Acciones</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID" Style="text-align: center;">@context.Id</MudTd>
+            <MudTd DataLabel="Proveedor" Style="text-align: center;">
+                @ObtenerNombreProveedor(context.ProveedorId)
+            </MudTd>
+            <MudTd DataLabel="Monto" Style="text-align: center;">@context.Monto.ToString("C")</MudTd>
+            <MudTd DataLabel="Fecha de Pago" Style="text-align: center;">
+                @(context.FechaPago.Year > 1 ? context.FechaPago.ToString("dd/MM/yyyy") : "Sin Fecha")
+            </MudTd>
+            <MudTd DataLabel="Acciones" Style="text-align: center;">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="() => EditPagoProveedor(context)" Color="Color.Primary" Title="Editar" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="async () => await DeletePagoProveedor(context.Id)" Color="Color.Error" Title="Eliminar" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+        <NoRecordsContent>
+            <MudText>No hay pagos registrados.</MudText>
+        </NoRecordsContent>
+    </MudTable>
+</MudPaper>
+
+<!-- Formulario para Historial de Compras -->
+<MudText Typo="Typo.h5" GutterBottom="true" Class="mt-4">Registro de Historial de Compras</MudText>
+<MudPaper Class="pa-4 mb-4" Elevation="1">
+    <EditForm Model="@newHistorialCompra" OnValidSubmit="@HandleHistorialCompraSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid Spacing="2">
+            <MudItem xs="12" sm="6">
+                <MudSelect T="int" Label="Proveedor" @bind-Value="newHistorialCompra.ProveedorId" Variant="Variant.Outlined">
+                    @foreach (var proveedor in proveedores)
+                    {
+                        <MudSelectItem Value="@proveedor.Id">@proveedor.Nombre</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudDatePicker @bind-Value="newHistorialCompra.FechaCompra" Label="Fecha de Compra" DateFormat="dd/MM/yyyy" Editable="true" Placeholder="Seleccione una fecha" DateChanged="@((DateTime? date) => OnFechaCompraChanged(date))" AutoClose="true" DisableToolbar="false" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="12" Class="mt-4">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">
+                    @(newHistorialCompra.Id == 0 ? "Registrar Historial" : "Actualizar Historial")
+                </MudButton>
+                @if (newHistorialCompra.Id != 0)
+                {
+                    <MudButton OnClick="@(() => ResetHistorialCompra())" Variant="Variant.Filled" Color="Color.Secondary" Class="ml-2">
+                        Cancelar Edición
+                    </MudButton>
+                }
+            </MudItem>
+        </MudGrid>
+        <ValidationSummary />
+    </EditForm>
+</MudPaper>
+
+<!-- Tabla de Historial de Compras -->
+<MudText Typo="Typo.h5" GutterBottom="true">Historial de Compras</MudText>
+<MudPaper Class="mb-4" Elevation="1">
+    <MudTable Items="@historialCompras" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+        <HeaderContent>
+            <MudTh Style="width: 10%; text-align: center;">ID</MudTh>
+            <MudTh Style="width: 30%; text-align: center;">Proveedor</MudTh>
+            <MudTh Style="width: 30%; text-align: center;">Fecha</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Productos</MudTh>
+            <MudTh Style="width: 15%; text-align: center;">Acciones</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID" Style="text-align: center;">@context.Id</MudTd>
+            <MudTd DataLabel="Proveedor" Style="text-align: center;">
+                @ObtenerNombreProveedor(context.ProveedorId)
+            </MudTd>
+            <MudTd DataLabel="Fecha" Style="text-align: center;">
+                @(context.FechaCompra.Year > 1 ? context.FechaCompra.ToString("dd/MM/yyyy") : "Sin Fecha")
+            </MudTd>
+            <MudTd DataLabel="Productos" Style="text-align: center;">@context.Productos.Count</MudTd>
+            <MudTd DataLabel="Acciones" Style="text-align: center;">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="() => EditHistorialCompra(context)" Color="Color.Primary" Title="Editar" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="async () => await DeleteHistorialCompra(context.Id)" Color="Color.Error" Title="Eliminar" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+        <NoRecordsContent>
+            <MudText>No hay historial de compras para mostrar.</MudText>
+        </NoRecordsContent>
+    </MudTable>
+</MudPaper>
+
+@code {
+    // Variables principales
+    private OrdenCompra newOrdenCompra = new()
+        {
+            Productos = new List<Producto>(),
+        };
+    private Proveedor newProveedor = new()
+        {
+            Id = 0,
+            Nombre = string.Empty,
+            Direccion = string.Empty,
+            Telefono = string.Empty,
+            Email = string.Empty
+        };
+    private ControlCredito newControlCredito = new()
+        {
+            Id = 0,
+            ProveedorId = 0,
+            CreditoDisponible = 0,
+            FechaVencimiento = DateTime.Today.AddMonths(1)
+        };
+    private PagoProveedor newPagoProveedor = new()
+        {
+            Id = 0,
+            ProveedorId = 0,
+            Monto = 0,
+            FechaPago = DateTime.Today
+        };
+    private HistorialCompra newHistorialCompra = new()
+        {
+            Id = 0,
+            ProveedorId = 0,
+            FechaCompra = DateTime.Today,
+            Productos = new List<Producto>()
+        };
+    private RecepcionMercancia newRecepcionMercancia = new()
+        {
+            Id = 0,
+            OrdenCompraId = 0,
+            FechaRecepcion = DateTime.Today,
+            Productos = new List<Producto>()
+        };
+    private Producto nuevoProducto = new()
+        {
+            Nombre = string.Empty,
+            Precio = 0,
+            Cantidad = 0
+        };
+
+    // Colecciones de datos
+    private IEnumerable<Proveedor> proveedores = new List<Proveedor>();
+    private IEnumerable<OrdenCompra> ordenesCompra = new List<OrdenCompra>();
+    private IEnumerable<ControlCredito> controlCreditos = new List<ControlCredito>();
+    private IEnumerable<PagoProveedor> pagosProveedores = new List<PagoProveedor>();
+    private IEnumerable<HistorialCompra> historialCompras = new List<HistorialCompra>();
+    private IEnumerable<RecepcionMercancia> recepcionMercancias = new List<RecepcionMercancia>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        try
+        {
+            proveedores = await CompraService.GetProveedoresAsync() ?? new List<Proveedor>();
+            ordenesCompra = await CompraService.GetOrdenesCompraAsync() ?? new List<OrdenCompra>();
+            controlCreditos = await CompraService.GetControlCreditosAsync() ?? new List<ControlCredito>();
+            pagosProveedores = await CompraService.GetPagosProveedoresAsync() ?? new List<PagoProveedor>();
+            historialCompras = await CompraService.GetHistorialComprasAsync() ?? new List<HistorialCompra>();
+            recepcionMercancias = await CompraService.GetRecepcionMercanciasAsync() ?? new List<RecepcionMercancia>();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al cargar datos: {ex.Message}", Severity.Error);
+        }
+    }
+
+    // Método auxiliar para obtener nombres de proveedores
+    private string ObtenerNombreProveedor(int proveedorId)
+    {
+        var proveedor = proveedores.FirstOrDefault(p => p.Id == proveedorId);
+        return proveedor != null ? proveedor.Nombre : $"Proveedor #{proveedorId}";
+    }
+
+    #region Gestión de Productos
+    private void AgregarProducto()
+    {
+        if (string.IsNullOrWhiteSpace(nuevoProducto.Nombre) || nuevoProducto.Precio <= 0 || nuevoProducto.Cantidad <= 0)
+        {
+            Snackbar.Add("Por favor complete los datos del producto correctamente.", Severity.Warning);
+            return;
+        }
+
+        // Crear una copia para evitar referencias
+        var producto = new Producto
+            {
+                Nombre = nuevoProducto.Nombre,
+                Precio = nuevoProducto.Precio,
+                Cantidad = nuevoProducto.Cantidad
+            };
+
+        // Agregar a la lista de la orden
+        newOrdenCompra.Productos.Add(producto);
+
+        // Limpiar para el próximo producto
+        nuevoProducto = new Producto
+            {
+                Nombre = string.Empty,
+                Precio = 0,
+                Cantidad = 0
+            };
+
+        Snackbar.Add("Producto agregado a la orden", Severity.Success);
+    }
+
+    private void EliminarProducto(Producto producto)
+    {
+        newOrdenCompra.Productos.Remove(producto);
+        Snackbar.Add("Producto eliminado de la orden", Severity.Info);
+    }
+    #endregion
+
+    #region OrdenCompra
+    private void EditOrdenCompra(OrdenCompra ordenCompra)
+    {
+        Console.WriteLine($"Fecha original para edición: {ordenCompra.FechaOrden}");
+
+        newOrdenCompra = new OrdenCompra
+            {
+                Id = ordenCompra.Id,
+                ProveedorId = ordenCompra.ProveedorId,
+                FechaOrden = ordenCompra.FechaOrden,
+                Productos = ordenCompra.Productos.Select(p => new Producto
+                {
+                    Nombre = p.Nombre,
+                    Precio = p.Precio,
+                    Cantidad = p.Cantidad
+                }).ToList()
+            };
+    }
+
+    private async Task DeleteOrdenCompra(int id)
+    {
+        try
+        {
+            await CompraService.DeleteOrdenCompraAsync(id);
+            Snackbar.Add("Orden de compra eliminada.", Severity.Info);
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al eliminar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            if (newOrdenCompra.Productos.Count == 0)
+            {
+                Snackbar.Add("Debe agregar al menos un producto a la orden", Severity.Warning);
+                return;
+            }
+
+            var ordenAGuardar = new OrdenCompra
+                {
+                    Id = newOrdenCompra.Id,
+                    ProveedorId = newOrdenCompra.ProveedorId,
+                    FechaOrden = newOrdenCompra.FechaOrden,
+                    Productos = new List<Producto>(newOrdenCompra.Productos)
+                };
+
+            Console.WriteLine($"DEBUG - FechaOrden antes de guardar: {ordenAGuardar.FechaOrden}");
+
+            if (newOrdenCompra.Id == 0)
+            {
+                await CompraService.AddOrdenCompraAsync(newOrdenCompra);
+                Snackbar.Add("Orden de compra añadida con éxito.", Severity.Success);
+            }
+            else
+            {
+                await CompraService.UpdateOrdenCompraAsync(newOrdenCompra);
+                Snackbar.Add("Orden de compra actualizada con éxito.", Severity.Success);
+            }
+
+            newOrdenCompra = new OrdenCompra
+                {
+                    Productos = new List<Producto>()
+                };
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al guardar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        Snackbar.Add("Por favor corrija los errores de validación.", Severity.Warning);
+    }
+
+    private void OnDateChanged(DateTime? date)
+    {
+        if (date.HasValue)
+        {
+            Console.WriteLine($"DEBUG - Fecha seleccionada en DatePicker: {date.Value}");
+            newOrdenCompra.FechaOrden = date.Value;
+        }
+    }
+
+    private void MostrarDetallesOrden(OrdenCompra orden)
+    {
+        // Aquí mostraríamos un diálogo con detalles de la orden
+        var mensaje = $"Orden #{orden.Id}: {orden.Productos.Count} productos por un total de {orden.Productos.Sum(p => p.Precio * p.Cantidad).ToString("C")}";
+        Snackbar.Add(mensaje, Severity.Info);
+    }
+    #endregion
+
+    #region RecepcionMercancia
+    private void CrearRecepcionDesdeOrden(OrdenCompra orden)
+    {
+        newRecepcionMercancia = new RecepcionMercancia
+            {
+                OrdenCompraId = orden.Id,
+                FechaRecepcion = DateTime.Today,
+                Productos = orden.Productos.Select(p => new Producto
+                {
+                    Nombre = p.Nombre,
+                    Precio = p.Precio,
+                    Cantidad = p.Cantidad
+                }).ToList()
+            };
+
+        Snackbar.Add("Se ha creado una recepción basada en la orden seleccionada. Complete los detalles y guárdela.", Severity.Info);
+    }
+
+    private void EditRecepcionMercancia(RecepcionMercancia recepcion)
+    {
+        newRecepcionMercancia = new RecepcionMercancia
+            {
+                Id = recepcion.Id,
+                OrdenCompraId = recepcion.OrdenCompraId,
+                FechaRecepcion = recepcion.FechaRecepcion,
+                Productos = recepcion.Productos.Select(p => new Producto
+                {
+                    Nombre = p.Nombre,
+                    Precio = p.Precio,
+                    Cantidad = p.Cantidad
+                }).ToList()
+            };
+    }
+
+    private async Task DeleteRecepcionMercancia(int id)
+    {
+        try
+        {
+            await CompraService.DeleteRecepcionMercanciaAsync(id);
+            Snackbar.Add("Recepción de mercancía eliminada.", Severity.Info);
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al eliminar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task HandleRecepcionSubmit()
+    {
+        try
+        {
+            if (newRecepcionMercancia.OrdenCompraId <= 0)
+            {
+                Snackbar.Add("Debe seleccionar una orden de compra válida", Severity.Warning);
+                return;
+            }
+
+            // Si no hay productos, intenta obtener los productos de la orden seleccionada
+            if (newRecepcionMercancia.Productos.Count == 0)
+            {
+                var orden = ordenesCompra.FirstOrDefault(o => o.Id == newRecepcionMercancia.OrdenCompraId);
+                if (orden != null)
+                {
+                    newRecepcionMercancia.Productos = orden.Productos.Select(p => new Producto
+                        {
+                            Nombre = p.Nombre,
+                            Precio = p.Precio,
+                            Cantidad = p.Cantidad
+                        }).ToList();
+                }
+            }
+
+            if (newRecepcionMercancia.Id == 0)
+            {
+                await CompraService.AddRecepcionMercanciaAsync(newRecepcionMercancia);
+                Snackbar.Add("Recepción de mercancía registrada con éxito.", Severity.Success);
+            }
+            else
+            {
+                await CompraService.UpdateRecepcionMercanciaAsync(newRecepcionMercancia);
+                Snackbar.Add("Recepción de mercancía actualizada con éxito.", Severity.Success);
+            }
+
+            ResetRecepcionMercancia();
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al guardar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void ResetRecepcionMercancia()
+    {
+        newRecepcionMercancia = new RecepcionMercancia
+            {
+                Id = 0,
+                OrdenCompraId = 0,
+                FechaRecepcion = DateTime.Today,
+                Productos = new List<Producto>()
+            };
+    }
+
+    private void OnFechaRecepcionChanged(DateTime? date)
+    {
+        if (date.HasValue)
+        {
+            newRecepcionMercancia.FechaRecepcion = date.Value;
+        }
+    }
+
+    private void MostrarDetallesRecepcion(RecepcionMercancia recepcion)
+    {
+        // Aquí mostraríamos un diálogo con detalles de la recepción
+        var mensaje = $"Recepción #{recepcion.Id} de Orden #{recepcion.OrdenCompraId}: {recepcion.Productos.Count} productos recibidos";
+        Snackbar.Add(mensaje, Severity.Info);
+    }
+    #endregion
+
+    #region Proveedor
+    private void EditProveedor(Proveedor proveedor)
+    {
+        newProveedor = new Proveedor
+            {
+                Id = proveedor.Id,
+                Nombre = proveedor.Nombre,
+                Direccion = proveedor.Direccion,
+                Telefono = proveedor.Telefono,
+                Email = proveedor.Email
+            };
+    }
+
+    private async Task DeleteProveedor(int id)
+    {
+        try
+        {
+            await CompraService.DeleteProveedorAsync(id);
+            Snackbar.Add("Proveedor eliminado.", Severity.Info);
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al eliminar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task HandleProveedorSubmit()
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(newProveedor.Nombre))
+            {
+                Snackbar.Add("El nombre del proveedor es obligatorio", Severity.Warning);
+                return;
+            }
+
+            if (newProveedor.Id == 0)
+            {
+                await CompraService.AddProveedorAsync(newProveedor);
+                Snackbar.Add("Proveedor añadido con éxito.", Severity.Success);
+            }
+            else
+            {
+                await CompraService.UpdateProveedorAsync(newProveedor);
+                Snackbar.Add("Proveedor actualizado con éxito.", Severity.Success);
+            }
+
+            ResetProveedor();
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al guardar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void ResetProveedor()
+    {
+        newProveedor = new Proveedor
+            {
+                Id = 0,
+                Nombre = string.Empty,
+                Direccion = string.Empty,
+                Telefono = string.Empty,
+                Email = string.Empty
+            };
+    }
+    #endregion
+
+    #region ControlCredito
+    private void EditControlCredito(ControlCredito controlCredito)
+    {
+        newControlCredito = new ControlCredito
+            {
+                Id = controlCredito.Id,
+                ProveedorId = controlCredito.ProveedorId,
+                CreditoDisponible = controlCredito.CreditoDisponible,
+                FechaVencimiento = controlCredito.FechaVencimiento
+            };
+    }
+
+    private async Task DeleteControlCredito(int id)
+    {
+        try
+        {
+            await CompraService.DeleteControlCreditoAsync(id);
+            Snackbar.Add("Control de crédito eliminado.", Severity.Info);
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al eliminar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task HandleControlCreditoSubmit()
+    {
+        try
+        {
+            var controlCreditoToSave = new ControlCredito
+                {
+                    Id = newControlCredito.Id,
+                    ProveedorId = newControlCredito.ProveedorId,
+                    CreditoDisponible = newControlCredito.CreditoDisponible,
+                    FechaVencimiento = newControlCredito.FechaVencimiento
+                };
+
+            Console.WriteLine($"DEBUG - Fecha de Vencimiento antes de guardar: {controlCreditoToSave.FechaVencimiento}");
+
+            if (newControlCredito.Id == 0)
+            {
+                await CompraService.AddControlCreditoAsync(controlCreditoToSave);
+                Snackbar.Add("Control de crédito añadido con éxito.", Severity.Success);
+            }
+            else
+            {
+                await CompraService.UpdateControlCreditoAsync(controlCreditoToSave);
+                Snackbar.Add("Control de crédito actualizado con éxito.", Severity.Success);
+            }
+
+            ResetControlCredito();
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al guardar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void ResetControlCredito()
+    {
+        newControlCredito = new ControlCredito
+            {
+                Id = 0,
+                ProveedorId = 0,
+                CreditoDisponible = 0,
+                FechaVencimiento = DateTime.Today.AddMonths(1)
+            };
+    }
+
+    private void OnFechaVencimientoChanged(DateTime? date)
+    {
+        if (date.HasValue)
+        {
+            Console.WriteLine($"DEBUG - Fecha de vencimiento seleccionada: {date.Value}");
+            newControlCredito.FechaVencimiento = date.Value;
+        }
+    }
+    #endregion
+
+    #region PagoProveedor
+    private void EditPagoProveedor(PagoProveedor pagoProveedor)
+    {
+        newPagoProveedor = new PagoProveedor
+            {
+                Id = pagoProveedor.Id,
+                ProveedorId = pagoProveedor.ProveedorId,
+                Monto = pagoProveedor.Monto,
+                FechaPago = pagoProveedor.FechaPago
+            };
+    }
+
+    private async Task DeletePagoProveedor(int id)
+    {
+        try
+        {
+            await CompraService.DeletePagoProveedorAsync(id);
+            Snackbar.Add("Pago eliminado.", Severity.Info);
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al eliminar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task HandlePagoProveedorSubmit()
+    {
+        try
+        {
+            var pagoToSave = new PagoProveedor
+                {
+                    Id = newPagoProveedor.Id,
+                    ProveedorId = newPagoProveedor.ProveedorId,
+                    Monto = newPagoProveedor.Monto,
+                    FechaPago = newPagoProveedor.FechaPago
+                };
+
+            Console.WriteLine($"DEBUG - Fecha de Pago antes de guardar: {pagoToSave.FechaPago}");
+
+            if (newPagoProveedor.Id == 0)
+            {
+                await CompraService.AddPagoProveedorAsync(pagoToSave);
+                Snackbar.Add("Pago añadido con éxito.", Severity.Success);
+            }
+            else
+            {
+                await CompraService.UpdatePagoProveedorAsync(pagoToSave);
+                Snackbar.Add("Pago actualizado con éxito.", Severity.Success);
+            }
+
+            ResetPagoProveedor();
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al guardar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void ResetPagoProveedor()
+    {
+        newPagoProveedor = new PagoProveedor
+            {
+                Id = 0,
+                ProveedorId = 0,
+                Monto = 0,
+                FechaPago = DateTime.Today
+            };
+    }
+
+    private void OnFechaPagoChanged(DateTime? date)
+    {
+        if (date.HasValue)
+        {
+            Console.WriteLine($"DEBUG - Fecha de pago seleccionada: {date.Value}");
+            newPagoProveedor.FechaPago = date.Value;
+        }
+    }
+    #endregion
+
+    #region HistorialCompra
+    private void EditHistorialCompra(HistorialCompra historialCompra)
+    {
+        newHistorialCompra = new HistorialCompra
+            {
+                Id = historialCompra.Id,
+                ProveedorId = historialCompra.ProveedorId,
+                FechaCompra = historialCompra.FechaCompra,
+                Productos = historialCompra.Productos.Select(p => new Producto
+                {
+                    Nombre = p.Nombre,
+                    Precio = p.Precio,
+                    Cantidad = p.Cantidad
+                }).ToList()
+            };
+    }
+
+    private async Task DeleteHistorialCompra(int id)
+    {
+        try
+        {
+            await CompraService.DeleteHistorialCompraAsync(id);
+            Snackbar.Add("Historial eliminado.", Severity.Info);
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al eliminar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task HandleHistorialCompraSubmit()
+    {
+        try
+        {
+            var historialToSave = new HistorialCompra
+                {
+                    Id = newHistorialCompra.Id,
+                    ProveedorId = newHistorialCompra.ProveedorId,
+                    FechaCompra = newHistorialCompra.FechaCompra,
+                    Productos = new List<Producto>(newHistorialCompra.Productos)
+                };
+
+            Console.WriteLine($"DEBUG - Fecha de Compra antes de guardar: {historialToSave.FechaCompra}");
+
+            if (newHistorialCompra.Id == 0)
+            {
+                await CompraService.AddHistorialCompraAsync(historialToSave);
+                Snackbar.Add("Historial añadido con éxito.", Severity.Success);
+            }
+            else
+            {
+                await CompraService.UpdateHistorialCompraAsync(historialToSave);
+                Snackbar.Add("Historial actualizado con éxito.", Severity.Success);
+            }
+
+            ResetHistorialCompra();
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al guardar: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void ResetHistorialCompra()
+    {
+        newHistorialCompra = new HistorialCompra
+            {
+                Id = 0,
+                ProveedorId = 0,
+                FechaCompra = DateTime.Today,
+                Productos = new List<Producto>()
+            };
+    }
+
+    private void OnFechaCompraChanged(DateTime? date)
+    {
+        if (date.HasValue)
+        {
+            Console.WriteLine($"DEBUG - Fecha de compra seleccionada: {date.Value}");
+            newHistorialCompra.FechaCompra = date.Value;
+        }
+    }
+    #endregion
+}

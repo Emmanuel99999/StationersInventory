@@ -8,18 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-
-
 builder.Services.AddMudServices();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-//conexión de ef core con sql server
+//conexiï¿½n de ef core con sql server
 
 
 
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICompraService, CompraService>();
 
 var app = builder.Build();
 
