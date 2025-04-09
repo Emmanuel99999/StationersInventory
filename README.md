@@ -4,6 +4,19 @@
   <img src="./docs/images/system-preview.png" alt="Vista previa" width="800">
 </div>
 
+## 📜 Índice
+
+- [📦 Sistema de Gestión de Inventario - MVC/Blazor](#-sistema-de-gestión-de-inventario---mvcblazor)
+  - [📜 Índice](#-índice)
+  - [🌟 Características Principales](#-características-principales)
+  - [🛠 Stack Tecnológico](#-stack-tecnológico)
+  - [🚀 Primeros Pasos](#-primeros-pasos)
+    - [Requisitos](#requisitos)
+    - [Instalación](#instalación)
+  - [🚀 Cómo Iniciar](#-cómo-iniciar)
+  - [🚀 Abrir en navegador](#-abrir-en-navegador)
+
+
 ## 🌟 Características Principales
 - **CRUD completo** de productos con validaciones
 - **Seguimiento automático** de movimientos (entradas/salidas)
@@ -36,12 +49,13 @@
    cd gestion-inventario
 
 ## 🚀 Cómo Iniciar
-### 2. Restaurar paquetes NuGet en tu IDE:
+2. **Restaurar paquetes NuGet en tu IDE**:
     dotnet restore
 
 ## 🚀 Abrir en navegador
-### 3. compilar proyecto
+3. **compilar proyecto**
   ```bash
     dotnet run
+
 
 
