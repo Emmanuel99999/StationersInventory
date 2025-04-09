@@ -1,10 +1,12 @@
 ﻿using GestionInventario_MVC.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using GestionInventario_MVC.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestionInventario_MVC.Services
 {
-    public class CompraService : ICompraService
+    public class CompraService(AppDbContext context) : ICompraService
     {
         private readonly List<OrdenCompra> _ordenesCompra = new();
         private readonly List<ControlCredito> _controlCreditos = new();
@@ -132,46 +134,54 @@ namespace GestionInventario_MVC.Services
             return Task.CompletedTask;
         }
 
-        // Gestión de Proveedores
-        public Task<IEnumerable<Proveedor>> GetProveedoresAsync() => Task.FromResult(_proveedores.AsEnumerable());
-        public Task AddProveedorAsync(Proveedor proveedor)
+        // Gestión de Proveedores CRUD
+        private readonly AppDbContext _context = context;
+
+        public async Task<IEnumerable<Proveedor>> GetProveedoresAsync()
         {
-            proveedor.Id = _proveedores.Count + 1;
-            _proveedores.Add(proveedor);
-            return Task.CompletedTask;
+            return await _context.Proveedores.ToListAsync();
         }
-        public Task UpdateProveedorAsync(Proveedor proveedor)
+
+        public async Task AddProveedorAsync(Proveedor proveedor)
         {
-            var existing = _proveedores.FirstOrDefault(p => p.Id == proveedor.Id);
-            if (existing != null)
+            _context.Proveedores.Add(proveedor);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateProveedorAsync(Proveedor proveedor)
+        {
+            _context.Proveedores.Update(proveedor);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteProveedorAsync(int id)
+        {
+            var proveedor = await _context.Proveedores.FindAsync(id);
+            if (proveedor != null)
             {
-                existing.Nombre = proveedor.Nombre;
-                existing.Direccion = proveedor.Direccion;
-                existing.Telefono = proveedor.Telefono;
-                existing.Email = proveedor.Email;
+                _context.Proveedores.Remove(proveedor);
+                await _context.SaveChangesAsync();
             }
-            return Task.CompletedTask;
-        }
-        public Task DeleteProveedorAsync(int id)
-        {
-            _proveedores.RemoveAll(p => p.Id == id);
-            return Task.CompletedTask;
         }
 
-        
-        public Task AddControlCreditoAsync(ControlCredito controlCredito)
+        public async Task<Proveedor?> GetProveedorByIdAsync(int id)
         {
-            controlCredito.Id = _controlCreditos.Count + 1;
-            _controlCreditos.Add(controlCredito);
-            return Task.CompletedTask;
+            return await _context.Proveedores.FindAsync(id);
         }
 
-        public Task DeleteControlCreditoAsync(int id)
-        {
-            _controlCreditos.RemoveAll(c => c.Id == id);
-            return Task.CompletedTask;
-        }
+            public Task AddControlCreditoAsync(ControlCredito controlCredito)
+            {
+                controlCredito.Id = _controlCreditos.Count + 1;
+                _controlCreditos.Add(controlCredito);
+                return Task.CompletedTask;
+            }
 
-    }
+            public Task DeleteControlCreditoAsync(int id)
+            {
+                _controlCreditos.RemoveAll(c => c.Id == id);
+                return Task.CompletedTask;
+            }
+
+        }
 
 }

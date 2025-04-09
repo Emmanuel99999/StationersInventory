@@ -38,6 +38,7 @@ namespace GestionInventario_MVC.Services
 
         // Gestión de Proveedores
         Task<IEnumerable<Proveedor>> GetProveedoresAsync();
+        Task<Proveedor?> GetProveedorByIdAsync(int id);
         Task AddProveedorAsync(Proveedor proveedor);
         Task UpdateProveedorAsync(Proveedor proveedor);
         Task DeleteProveedorAsync(int id);

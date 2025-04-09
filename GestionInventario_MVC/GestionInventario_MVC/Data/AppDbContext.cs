@@ -13,5 +13,7 @@ namespace GestionInventario_MVC.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<InventoryMovement> InventoryMovements { get; set; } 
+        public DbSet<Proveedor> Proveedores { get; set; }
+
     }
 }
