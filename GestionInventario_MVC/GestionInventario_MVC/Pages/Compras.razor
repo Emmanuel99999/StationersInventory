@@ -23,7 +23,7 @@
                 <MudTextField @bind-Value="newProveedor.Email" Label="Email" Variant="Variant.Outlined" />
             </MudItem>
             <MudItem xs="12" Class="mt-4">
-                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Class="custom-btn">
                     @(newProveedor.Id == 0 ? "Registrar Proveedor" : "Actualizar Proveedor")
                 </MudButton>
                 @if (newProveedor.Id != 0)
@@ -1128,3 +1128,11 @@
     }
     #endregion
 }
+
+<style>
+    main {
+        flex: 1;
+        padding: 1rem;
+        background: #b3e9ff;
+    }
+</style>

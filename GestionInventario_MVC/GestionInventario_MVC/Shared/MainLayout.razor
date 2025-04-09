@@ -1,9 +1,11 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Components.Routing
-@using MudBlazor 
+@using MudBlazor
+@inject NavigationManager NavigationManager
 
 <PageTitle>GestionInventario_MVC</PageTitle>
+<CssLoader />
 
 @* --- INICIO: AÑADIR PROVEEDORES MUD BLAZOR --- *@
 <MudThemeProvider />
@@ -17,18 +19,27 @@
         <nav>
             <ul>
                 <li>
-                    <NavLink href="/" Match="NavLinkMatch.All">Inicio</NavLink>
+                    <NavLink href="/" Match="NavLinkMatch.All" class="@GetNavLinkClass("/")">
+                        <MudIcon Icon="@Icons.Material.Filled.Home" Class="nav-icon" />
+                        Inicio
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink href="/inventory">Inventario</NavLink>
+                    <NavLink href="/inventory" class="@GetNavLinkClass("/inventory")">
+                        <MudIcon Icon="@Icons.Material.Filled.Inventory" Class="nav-icon" />
+                        Inventario
+                    </NavLink>
                 </li>
-                                <li>
-                    <NavLink href="/compras">Compras</NavLink>
+                <li>
+                    <NavLink href="/compras" class="@GetNavLinkClass("/compras")">
+                         <MudIcon Icon="@Icons.Material.Filled.ShoppingCart" Class="nav-icon" />
+                                Compras
+                     </NavLink>
                 </li>
-
             </ul>
         </nav>
     </div>
+
     <main>
         <article>
             @Body
@@ -36,20 +47,34 @@
     </main>
 </div>
 
+@code {
+    private string GetNavLinkClass(string path)
+    {
+        return NavigationManager.Uri.EndsWith(path) ? "active" : "";
+    }
+}
+
 @* Los estilos CSS permanecen igual que en la versión anterior *@
 <style>
+
     .page {
         display: flex;
         flex-direction: row;
         min-height: 100vh;
+        font-family: 'Segoe UI', system-ui, sans-serif;
     }
 
+
     .sidebar {
-        width: 200px;
-        background-color: #f8f9fa;
-        padding: 1rem;
-        border-right: 1px solid #dee2e6;
+        width: 150px;
+        min-height: 100vh;
+        background: linear-gradient(180deg, #0575E6 0%, #0252a8 100%);
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        box-shadow: 5px 0 10px -5px rgba(0, 193, 255, 0.3), inset -1px 0 0 rgba(255, 255, 255, 0.1);
     }
+
 
         .sidebar nav ul {
             list-style: none;
@@ -57,37 +82,36 @@
             margin: 0;
         }
 
+
         .sidebar nav li {
-            margin-bottom: 0.5rem;
+            margin: 0;
+            padding: 0.25rem 1rem;
         }
 
-            .sidebar nav li .nav-link {
-                display: block;
-                padding: 0.25rem 0;
-                color: #212529;
-                text-decoration: none;
-                border-radius: 4px;
-                padding-left: 0.5rem;
+
+            .sidebar nav li a {
+                display: flex;
+                align-items: center;
+                padding: 0.75rem 1rem;
+                color: rgba(255, 255, 255, 0.95) !important;
+                text-decoration: none !important;
+                border-radius: 6px;
+                transition: all 0.25s ease;
+                font-size: 0.95rem;
+                font-weight: 500;
             }
 
-                .sidebar nav li .nav-link.active {
-                    color: #0d6efd;
-                    background-color: #e7f1ff;
-                    font-weight: bold;
+                .sidebar nav li a:hover {
+                    background-color: rgba(255, 255, 255, 0.15) !important;
+                    transform: translateX(5px);
                 }
 
-                .sidebar nav li .nav-link:not(.active):hover {
-                    background-color: #e9ecef;
-                    color: #0056b3;
+
+                .sidebar nav li a.active {
+                    background-color: rgba(255, 255, 255, 0.25) !important;
+                    font-weight: 600;
+                    box-shadow: inset 4px 0 0 white;
                 }
 
-    main {
-        flex: 1;
-        padding: 1rem;
-        background-color: #ffffff;
-    }
 
-    article {
-        padding: 1rem;
-    }
 </style>

@@ -1,22 +1,85 @@
-html {
-  font-size: 14px;
+﻿/* Estilos para el formulario */
+.inventory-form {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3f51b5;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/* Estilos para botones */
+.inventory-btn {
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    .inventory-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+/* Estilos para la tabla */
+.inventory-table {
+    --mud-table-border: 1px solid #e0e0e0;
+    --mud-table-striped-opacity: 0.03;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+    .inventory-table th {
+        font-weight: 600;
+        background-color: #f5f5f5;
+    }
+
+/* Estilos para chips de categor�a */
+.category-chip {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    display: inline-block;
 }
 
-body {
-  margin-bottom: 60px;
+/* Estilos condicionales para stock */
+.stock-low {
+    color: #ff9800;
+    font-weight: 500;
+}
+
+.stock-critical {
+    color: #f44336;
+    font-weight: bold;
+}
+/* Estilo para bot�n principal */
+.custom-btn {
+    transition: all 0.3s ease;
+    color:;
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 8px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+    .custom-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+/* Estilo para botones de acci�n */
+.action-btn {
+    transition: all 0.2s ease;
+    margin: 0 4px;
+    padding: 8px;
+}
+
+    .action-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+/* Color espec�fico para hover del bot�n de editar */
+.mud-icon-button.color-primary:hover {
+    background-color: #bbdefb !important;
+}
+
+/* Color espec�fico para hover del bot�n de eliminar */
+.mud-icon-button.color-error:hover {
+    background-color: #ffcdd2 !important;
 }

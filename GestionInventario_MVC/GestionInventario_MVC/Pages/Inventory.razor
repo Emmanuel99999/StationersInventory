@@ -31,7 +31,7 @@
                 <ValidationMessage For="@(() => newProduct.Barcode)" />
             </MudItem>
             <MudItem xs="12" Class="mt-4">
-                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Guardar</MudButton>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" class="custom-btn">Guardar</MudButton>
             </MudItem>
         </MudGrid>
         <ValidationSummary />
@@ -94,6 +94,14 @@
  </MudTable>
 </MudPaper>
 
+<style>
+    main {
+        flex: 1;
+        padding: 1rem;
+        background: #b3e9ff;
+
+    }
+</style>
 
 @code {
     private Product newProduct = new();

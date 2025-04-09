@@ -1,6 +1,138 @@
 ﻿@page "/"
+@using MudBlazor
 
-<PageTitle>Inicio - Gestión Inventario</PageTitle> 
+<style>
+    main {
+        flex: 1;
+        padding: 1rem;
+        background: linear-gradient(0deg, #ffffff 0%, #a0e1ff 30%, #00c1ff 70%);
+        ;
+        
+        
+    }
+    .main-container {
+        background: transparent;
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
 
-<MudText Typo="Typo.h4" GutterBottom="true">Bienvenido a la Gestión de Inventario</MudText>
-<MudText>Usa el menú de navegación para ir a las diferentes secciones de la aplicación.</MudText>
+    .hero-section {
+        background: transparent;
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 4rem 2rem;
+        margin: 0 auto 3rem auto;
+        max-width: 900px;
+        text-align: center;
+        
+    }
+
+    .hero-title {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .features-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .feature-box {
+        background: #00c1ff;
+        border: 1px solid #A2D6F9;
+        border-radius: 15px;
+        padding: 2rem;
+        height: 100%;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 150, 252, 0.3);
+            box-shadow: 0 8px 16px #0e4d61;
+            
+        }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #FCF300;
+    }
+
+    .feature-title {
+        color: white ;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .feature-text {
+        color: #FCF300 ;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+
+<div class="main-container">
+    <div class="hero-section">
+        <MudText Class="hero-title" Typo="Typo.h3">
+            Bienvenido a la Gestión de Inventario
+        </MudText>
+        <MudText Class="hero-subtitle">
+            Usa el menú de navegación para acceder a las diferentes secciones del sistema
+        </MudText>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-container">
+        <MudGrid>
+            <MudItem xs="12" md="4">
+                <div class="feature-box">
+                    <div class="feature-icon">📊</div>
+                    <MudText Class="feature-title">Seguimiento de Stock</MudText>
+                    <MudText Class="feature-text">Monitoreo en tiempo real de todos tus productos</MudText>
+                </div>
+            </MudItem>
+
+            <MudItem xs="12" md="4">
+                <div class="feature-box">
+                    <div class="feature-icon">⚡</div>
+                    <MudText Class="feature-title">Rápido y Eficiente</MudText>
+                    <MudText Class="feature-text">Actualización instantánea de tu inventario</MudText>
+                </div>
+            </MudItem>
+
+            <MudItem xs="12" md="4">
+                <div class="feature-box">
+                    <div class="feature-icon">🔒</div>
+                    <MudText Class="feature-title">Sistema Seguro</MudText>
+                    <MudText Class="feature-text">Acceso controlado por roles de usuario</MudText>
+                </div>
+            </MudItem>
+        </MudGrid>
+    </div>
+</div>
