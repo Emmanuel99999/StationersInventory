@@ -58,6 +58,3 @@ Aplicación web para gestión de inventarios desarrollada con Blazor (MudBlazor)
   ```bash
     dotnet run
 
-
-
-
