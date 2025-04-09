@@ -36,12 +36,13 @@
    cd gestion-inventario
 
 ### 🚀 Cómo Iniciar
-2. **Restaurar paquetes NuGet** en tu IDE.
+2. **Restaurar paquetes NuGet en tu IDE**:
   ```bash
 dotnet restore
 
 
 ### 🚀 Abrir en navegador
-3. **Compilar proyecto**
+3. **Compilar proyecto**:
   ```bash
 dotnet run
+
