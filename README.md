@@ -14,6 +14,7 @@
     - [Requisitos](#requisitos)
     - [Instalación](#instalación)
   - [🚀 Cómo Iniciar](#-cómo-iniciar)
+    - [2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "](#2---visual-studio-2022-abrir-el-proyecto-en-el-ide-y-ejecutar-)
   - [🚀 Abrir en navegador](#-abrir-en-navegador)
 
 
@@ -49,13 +50,12 @@
    cd gestion-inventario
 
 ## 🚀 Cómo Iniciar
-2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "
+### 2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "
     dotnet restore
 
 ## 🚀 Abrir en navegador
 3. **compilar proyecto**
   ```bash
     dotnet run
-
 
 
