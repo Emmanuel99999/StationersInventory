@@ -1,8 +1,9 @@
 # 📦 Sistema de Gestión de Inventario - MVC/Blazor
-
+Aplicación web para gestión de inventarios desarrollada con Blazor (MudBlazor) en frontend y ASP.NET Core MVC en backend.
 <div align="center">
   <img src="./docs/images/system-preview.png" alt="Vista previa" width="800">
 </div>
+
 
 ## 📜 Índice
 
@@ -10,13 +11,10 @@
   - [📜 Índice](#-índice)
   - [🌟 Características Principales](#-características-principales)
   - [🛠 Stack Tecnológico](#-stack-tecnológico)
-  - [🚀 Primeros Pasos](#-primeros-pasos)
-    - [Requisitos](#requisitos)
-    - [Instalación](#instalación)
-  - [🚀 Cómo Iniciar](#-cómo-iniciar)
-    - [2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "](#2---visual-studio-2022-abrir-el-proyecto-en-el-ide-y-ejecutar-)
-  - [🚀 Abrir en navegador](#-abrir-en-navegador)
-
+  - [🚀 Primeros Pasos {#sección-3}](#-primeros-pasos-sección-3)
+    - [Requisitos {#subsección-3-1}](#requisitos-subsección-3-1)
+    - [Instalación {#subsección-3-2}](#instalación-subsección-3-2)
+  - [🚀 Cómo Iniciar {#sección-4}](#-cómo-iniciar-sección-4)
 
 ## 🌟 Características Principales
 - **CRUD completo** de productos con validaciones
@@ -33,9 +31,9 @@
 | Base de datos    | SQL Server               | -       |
 | Validaciones     | DataAnnotations          | -       |
 
-## 🚀 Primeros Pasos
+## 🚀 Primeros Pasos {#sección-3}
 
-### Requisitos
+### Requisitos {#subsección-3-1}
 - [.NET 8 SDK](https://dotnet.microsoft.com/download)
 - IDE:
   - **Visual Studio 2022** (Recomendado)
@@ -43,19 +41,15 @@
     - C# Dev Kit
     - Blazor WASM Tools
 
-### Instalación
+### Instalación {#subsección-3-2}
 1. **Clonar repositorio**:
    ```bash
    git clone https://github.com/tu-usuario/gestion-inventario.git
    cd gestion-inventario
 
-## 🚀 Cómo Iniciar
-### 2. - **Visual Studio 2022**: Abrir el proyecto en el IDE y ejecutar "
-    dotnet restore
-
-## 🚀 Abrir en navegador
-3. **compilar proyecto**
-  ```bash
-    dotnet run
-
+## 🚀 Cómo Iniciar {#sección-4}
+1. **Visual Studio 2022**:
+   ```bash
+   dotnet restore
+   dotnet run
 
