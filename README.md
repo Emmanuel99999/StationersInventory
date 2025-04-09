@@ -32,18 +32,16 @@
 ### Instalación
 1. **Clonar repositorio**:
    ```bash
-   -git clone https://github.com/tu-usuario/gestion-inventario.git
-   -cd gestion-inventario
+   git clone https://github.com/tu-usuario/gestion-inventario.git
+   cd gestion-inventario
 
 ### 🚀 Cómo Iniciar
 2. **Restaurar paquetes NuGet en tu IDE**
-  ```bash
     -dotnet restore
 
 
 ### 🚀 Abrir en navegador
 3. **Compilar proyecto**
   ```bash
-    -dotnet run
-
+    dotnet run
 
