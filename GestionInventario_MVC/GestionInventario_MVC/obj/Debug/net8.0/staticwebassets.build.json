@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FwxtqovkO44DrrzGwtKKt7McLEAR2H+I7VcH6OJI68o=",
+  "Hash": "xL7AuH4W5MVOcC2qCj4nch+Ze+xUiSFXzB3P74rSA8s=",
   "Source": "GestionInventario_MVC",
   "BasePath": "_content/GestionInventario_MVC",
   "Mode": "Default",
@@ -1549,7 +1549,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:06:13 GMT"
+          "Value": "Wed, 09 Apr 2025 23:01:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1586,7 +1586,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:06:13 GMT"
+          "Value": "Wed, 09 Apr 2025 23:01:15 GMT"
         },
         {
           "Name": "Cache-Control",
