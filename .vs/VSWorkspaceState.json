@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GestionInventario_MVC",
+    "\\GestionInventario_MVC\\GestionInventario_MVC",
+    "\\GestionInventario_MVC\\GestionInventario_MVC\\Models"
   ],
+  "SelectedNode": "\\GestionInventario_MVC\\GestionInventario_MVC\\Models\\Compras.Models.cs",
   "PreviewInSolutionExplorer": false
 }
