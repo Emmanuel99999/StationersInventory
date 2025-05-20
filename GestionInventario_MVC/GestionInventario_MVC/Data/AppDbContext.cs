@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using GestionInventario_MVC.Areas.Identity.Data;
 
 namespace GestionInventario_MVC.Data
 {
-    public class AppDbContext : IdentityDbContext<IdentityUser>
+    public class AppDbContext : IdentityDbContext<GestionInventario_MVCUser>
+
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
