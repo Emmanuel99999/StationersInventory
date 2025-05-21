@@ -1,14 +1,13 @@
 @using GestionInventario_MVC.Areas.Identity.Data
 @using Microsoft.AspNetCore.Identity
-@using GestionInventario_MVC.Data
 @inject SignInManager<GestionInventario_MVCUser> SignInManager
 @inject UserManager<GestionInventario_MVCUser> UserManager
 
 <ul class="navbar-nav">
-    @if (SignInManager.IsSignedIn(User))
+    @if (SignInManager.IsSignedIn(User)) // Si el usuario está autenticado
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hola, @UserManager.GetUserName(User)!</a>
+            <span class="nav-link text-dark">Hola, @UserManager.GetUserAsync(User).Result?.FullName!</span> @* Muestra el FullName *@
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
@@ -16,13 +15,13 @@
             </form>
         </li>
     }
-    else
+    else // Si el usuario NO está autenticado
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Iniciar sesión</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Register">Registrarse</a> @* Apuntando a tu UsersController *@
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registrarse</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Iniciar sesión</a> @* Apuntando a tu UsersController *@
         </li>
     }
 </ul>
