@@ -138,6 +138,10 @@ h2 {
     border-radius: 8px;
     transition: all 0.3s;
 }
+.btn-outline-primary:hover {
+    background-color: var(--bs-primary);
+    color: white;
+}
 
     #login-submit:hover {
         background-color: #2980b9;
@@ -185,4 +189,19 @@ a[asp-page="./Register"] {
 
     #external-account .btn:hover {
         background-color: #e9ecef;
+    }
+.logout-item {
+    margin-top: auto; /* Empuja el botón hacia abajo */
+    padding-top: 1rem;
+    border-top: 1px solid var(--mud-palette-divider);
+}
+.logout-button {
+    justify-content: flex-start ;
+    padding-left: 16px ;
+    text-transform: none ;
+}
+
+    /* Opcional: estilo hover */
+    .logout-button:hover {
+        background-color: rgba(255, 0, 0, 0.04);
     }

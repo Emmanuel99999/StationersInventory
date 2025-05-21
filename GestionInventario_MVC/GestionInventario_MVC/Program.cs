@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using GestionInventario_MVC.Areas.Identity.Data;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -25,17 +24,12 @@ builder.Services.AddDefaultIdentity<GestionInventario_MVCUser>(options =>
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<AppDbContext>();
 
-
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login";
     options.LogoutPath = "/Identity/Account/Logout";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
-//conexi�n de ef core con sql server
-
-
-
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICompraService, CompraService>();
@@ -49,12 +43,24 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Middleware alternativo
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/" &&
+        !context.Request.Query.ContainsKey("fromHome"))
+    {
+        context.Response.Redirect("/home/index");
+        return;
+    }
+    await next();
+});
+
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
