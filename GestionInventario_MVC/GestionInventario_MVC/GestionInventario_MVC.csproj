@@ -22,6 +22,11 @@
 		<PackageReference Include="MudBlazor" Version="8.5.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controllers\Account\" />
+	  <Folder Include="Models\Account\" />
+	</ItemGroup>
+
 
 
 </Project>

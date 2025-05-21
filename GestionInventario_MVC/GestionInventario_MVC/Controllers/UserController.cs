@@ -96,5 +96,81 @@ namespace GestionInventario_MVC.Controllers
 
             return View(model);
         }
+
+                [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string currentPassword, string newPassword, string confirmPassword)
+        {
+            if (string.IsNullOrWhiteSpace(currentPassword) ||
+                string.IsNullOrWhiteSpace(newPassword) ||
+                string.IsNullOrWhiteSpace(confirmPassword))
+            {
+                return BadRequest("Todos los campos son obligatorios.");
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                return BadRequest("Las nuevas contraseñas no coinciden.");
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound("Usuario no encontrado.");
+            }
+
+            var changePasswordResult = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            if (!changePasswordResult.Succeeded)
+            {
+                foreach (var error in changePasswordResult.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return View(); // o una vista específica como View("ChangePassword")
+            }
+
+            await _signInManager.RefreshSignInAsync(user);
+            TempData["SuccessMessage"] = "Contraseña actualizada correctamente.";
+            return RedirectToAction("Index", "Transacciones");
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return NotFound();
+
+            user.FullName = model.FullName;
+            user.PhoneNumber = model.PhoneNumber;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                ViewData["Message"] = "Perfil actualizado correctamente.";
+                return View(model);
+            }
+
+            foreach (var error in result.Errors)
+                ModelState.AddModelError(string.Empty, error.Description);
+
+            return View(model);
+        }
+        // GET: /Users/EditProfile
+        [HttpGet]
+        public IActionResult EditProfile()
+        {
+            // Aquí cargas el modelo con datos del usuario y luego devuelves la vista.
+            return View();
+        }
+
     }
 }

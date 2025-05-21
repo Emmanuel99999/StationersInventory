@@ -14,6 +14,12 @@
                 <button type="submit" class="nav-link btn btn-link text-dark">Cerrar sesión</button>
             </form>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/ChangePassword">Cambiar contraseña</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Users" asp-action="EditProfile">Editar Perfil</a>
+        </li>
     }
     else // Si el usuario NO está autenticado
     {
