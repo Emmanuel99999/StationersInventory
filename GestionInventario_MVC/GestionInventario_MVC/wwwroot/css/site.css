@@ -83,3 +83,106 @@
 .mud-icon-button.color-error:hover {
     background-color: #ffcdd2 !important;
 }
+/* ----- Contenedor Principal ----- */
+#account {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+/* ----- Títulos ----- */
+h1 {
+    color: #2c3e50;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+}
+
+/* ----- Campos de Formulario ----- */
+.form-floating {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    border: 2px solid #dfe6e9;
+    border-radius: 8px;
+    padding: 12px;
+    transition: border-color 0.3s;
+}
+
+    .form-control:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+    }
+
+.form-label {
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+/* ----- Botón de Login ----- */
+#login-submit {
+    background-color: #3498db;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+    #login-submit:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+    }
+
+/* ----- Checkbox "Remember me" ----- */
+.checkbox {
+    margin: 1.2rem 0;
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+/* ----- Enlaces Inferiores ----- */
+#account div p {
+    margin: 0.8rem 0;
+}
+
+#forgot-password,
+#resend-confirmation,
+a[asp-page="./Register"] {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+    #forgot-password:hover,
+    #resend-confirmation:hover,
+    a[asp-page="./Register"]:hover {
+        color: #2980b9;
+        text-decoration: underline;
+    }
+
+/* ----- Sección de Login Externo ----- */
+#external-account .btn {
+    margin: 5px;
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    border: 1px solid #ddd;
+}
+
+    #external-account .btn:hover {
+        background-color: #e9ecef;
+    }
