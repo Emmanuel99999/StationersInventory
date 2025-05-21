@@ -7,6 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="MailKit" Version="4.12.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
@@ -20,6 +21,11 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
 		<PackageReference Include="MudBlazor" Version="8.5.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controllers\Account\" />
+	  <Folder Include="Models\Account\" />
 	</ItemGroup>
 
 
