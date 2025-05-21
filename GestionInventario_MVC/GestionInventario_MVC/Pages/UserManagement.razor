@@ -1,0 +1,314 @@
+﻿@page "/usermanagement"
+@inject IUserService UserService
+@inject IRoleService RoleService
+@inject ISnackbar Snackbar
+@inject IDialogService DialogService
+
+@attribute [Authorize(Roles = "Administrador")]
+
+<PageTitle>User Management</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Gestión de Usuarios</MudText>
+
+<MudPaper Class="pa-4 mb-4" Elevation="1">
+    <MudText Typo="Typo.h6" GutterBottom="true">@(isEditMode ? "Editar Usuario: " + userFormModel.OriginalEmail : "Crear Nuevo Usuario")</MudText>
+    <EditForm Model="@userFormModel" OnValidSubmit="HandleValidUserSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid Spacing="2">
+            <MudItem xs="12" sm="6">
+                <MudTextField @bind-Value="userFormModel.Email" Label="Correo Electrónico" For="@(() => userFormModel.Email)" Variant="Variant.Outlined" />
+                <ValidationMessage For="@(() => userFormModel.Email)" />
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudTextField @bind-Value="userFormModel.Password"
+                              Label="@(isEditMode ? "Nueva Contraseña (opcional)" : "Contraseña")"
+                              For="@(() => userFormModel.Password)"
+                              InputType="@_passwordInputType"
+                              Variant="Variant.Outlined"
+                              HelperText="@(isEditMode ? "Dejar en blanco para no cambiar la contraseña actual." : "Contraseña para nuevo usuario.")"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@_passwordInputIcon"
+                              OnAdornmentClick="TogglePasswordVisibility"
+                              AdornmentAriaLabel="Mostrar/Ocultar contraseña" />
+                <ValidationMessage For="@(() => userFormModel.Password)" />
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudText Typo="Typo.subtitle1">Roles Asignados:</MudText>
+                @if (availableRoles.Any())
+                {
+                    <MudChipSet T="string"
+                                Filter="true"
+                                Mandatory="false"
+                                Multiple="true"
+                                SelectedValues="@userFormModel.SelectedRoleNamesHashSet.ToArray()"
+                                SelectedValuesChanged="OnSelectedRolesChangedHandler">
+                        @foreach (var role in availableRoles)
+                        {
+                            <MudChip T="string"
+                                     Text="@role.Name"
+                                     Value="@role.Name">
+                            </MudChip>
+                        }
+                    </MudChipSet>
+
+                }
+                else
+                {
+                    <MudText>No hay roles disponibles para asignar. Por favor, cree roles primero.</MudText>
+                }
+            </MudItem>
+
+            <MudItem xs="12" Class="mt-4">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@(isEditMode ? "Actualizar Usuario" : "Crear Usuario")</MudButton>
+                @if (isEditMode)
+                {
+                    <MudButton OnClick="CancelEdit" Variant="Variant.Outlined" Color="Color.Secondary" Class="ml-2">Cancelar Edición</MudButton>
+                }
+            </MudItem>
+        </MudGrid>
+        <ValidationSummary Class="mt-2" />
+    </EditForm>
+</MudPaper>
+
+<MudText Typo="Typo.h5" GutterBottom="true" Class="mt-6">Lista de Usuarios</MudText>
+<MudTable Items="@userList" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0" Loading="@isLoading" Dense="true">
+    <HeaderContent>
+        <MudTh>ID</MudTh>
+        <MudTh>Usuario (Email)</MudTh>
+        <MudTh>Roles</MudTh>
+        <MudTh>Acciones</MudTh>
+    </HeaderContent>
+    <RowTemplate Context="userContext">
+        <MudTd DataLabel="ID">@userContext.Id</MudTd>
+        <MudTd DataLabel="Usuario (Email)">@userContext.Email</MudTd>
+        <MudTd DataLabel="Roles">
+            @if (userContext.Roles.Any())
+            {
+                foreach (var roleName in userContext.Roles)
+                {
+                    <MudChip T="string" Text="@roleName" Size="Size.Small" Color="Color.Secondary" Class="mr-1 mb-1" />
+                }
+            }
+            else
+            {
+                <MudText Typo="Typo.caption">Sin roles</MudText>
+            }
+        </MudTd>
+        <MudTd DataLabel="Acciones">
+            <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="() => StartEditUser(userContext)" Color="Color.Primary" Title="Editar Usuario" />
+            <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="async () => await ConfirmDeleteUser(userContext.Id, userContext.Email)" Color="Color.Error" Title="Eliminar Usuario" />
+        </MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+    <NoRecordsContent>
+        <MudText>No hay usuarios para mostrar.</MudText>
+    </NoRecordsContent>
+    <LoadingContent>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+    </LoadingContent>
+</MudTable>
+
+@code {
+    public class UserFormModel
+    {
+        public string Id { get; set; } = string.Empty;
+        public string OriginalEmail { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string? Password { get; set; }
+        public HashSet<string> SelectedRoleNamesHashSet { get; set; } = new HashSet<string>();
+    }
+
+    private UserFormModel userFormModel = new UserFormModel();
+    private IEnumerable<UserDto> userList = new List<UserDto>();
+    private IEnumerable<IdentityRole> availableRoles = new List<IdentityRole>();
+
+    private bool isEditMode = false;
+    private bool isLoading = true;
+
+    private bool _showPassword = false;
+    private InputType _passwordInputType = InputType.Password;
+    private string _passwordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+        await LoadAvailableRoles();
+        isLoading = false;
+    }
+
+    private async Task LoadUsers()
+    {
+        isLoading = true;
+        userList = await UserService.GetUsersWithRolesAsync() ?? new List<UserDto>();
+        isLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task LoadAvailableRoles()
+    {
+        // Guardamos los nombres de los roles en una lista para el @foreach del ChipSet
+        // y para que el HashSet se construya correctamente.
+        var rolesFromService = await RoleService.GetRolesAsync() ?? new List<IdentityRole>();
+        availableRoles = rolesFromService.ToList(); // Guardar la lista completa para el @foreach
+        StateHasChanged();
+    }
+
+    // Método para manejar el cambio en los roles seleccionados desde MudChipSet
+    private void OnSelectedRolesChangedHandler(IEnumerable<string> newSelectedValues)
+    {
+        // El parámetro newSelectedValues ya es la colección de los VALUES de los chips SELECCIONADOS.
+        // Simplemente lo convertimos a HashSet y lo asignamos.
+        userFormModel.SelectedRoleNamesHashSet = new HashSet<string>(newSelectedValues ?? Enumerable.Empty<string>());
+        StateHasChanged(); // Forzar actualización de UI
+    }
+
+
+    private void StartEditUser(UserDto userToEdit)
+    {
+        isEditMode = true;
+        userFormModel = new UserFormModel
+        {
+            Id = userToEdit.Id,
+            OriginalEmail = userToEdit.Email,
+            Email = userToEdit.Email,
+            SelectedRoleNamesHashSet = new HashSet<string>(userToEdit.Roles),
+            Password = null
+        };
+        _showPassword = false;
+        _passwordInputType = InputType.Password;
+        _passwordInputIcon = Icons.Material.Filled.VisibilityOff;
+        StateHasChanged();
+
+    }
+
+    private void CancelEdit()
+    {
+        isEditMode = false;
+        userFormModel = new UserFormModel();
+        _showPassword = false;
+        _passwordInputType = InputType.Password;
+        _passwordInputIcon = Icons.Material.Filled.VisibilityOff;
+    }
+
+    private async Task HandleValidUserSubmit()
+    {
+        IdentityResult? operationResult = null;
+        var rolesToSubmit = userFormModel.SelectedRoleNamesHashSet.ToList();
+
+        if (isEditMode)
+        {
+            var dto = new UpdateUserDto
+            {
+                Id = userFormModel.Id,
+                Email = userFormModel.Email,
+                Roles = rolesToSubmit,
+                NewPassword = string.IsNullOrWhiteSpace(userFormModel.Password) ? null : userFormModel.Password
+            };
+            operationResult = await UserService.UpdateUserAsync(dto);
+        }
+        else
+        {
+            if (string.IsNullOrWhiteSpace(userFormModel.Password))
+            {
+                Snackbar.Add("La contraseña es obligatoria para crear un nuevo usuario.", Severity.Warning);
+                return;
+            }
+            var dto = new CreateUserDto
+            {
+                Email = userFormModel.Email,
+                Password = userFormModel.Password!,
+                Roles = rolesToSubmit
+            };
+            (var createResult, _) = await UserService.CreateUserAsync(dto);
+            operationResult = createResult;
+        }
+
+        if (operationResult == null)
+        {
+            Snackbar.Add("La operación no devolvió un resultado.", Severity.Error);
+            return;
+        }
+
+        if (operationResult.Succeeded)
+        {
+            Snackbar.Add(isEditMode ? "Usuario actualizado con éxito." : "Usuario creado con éxito.", Severity.Success);
+            isEditMode = false;
+            userFormModel = new UserFormModel();
+            _showPassword = false;
+            _passwordInputType = InputType.Password;
+            _passwordInputIcon = Icons.Material.Filled.VisibilityOff;
+            await LoadUsers();
+        }
+        else
+        {
+            if (operationResult.Errors != null && operationResult.Errors.Any())
+            {
+                foreach (var error in operationResult.Errors)
+                {
+                    Snackbar.Add($"{error.Code}: {error.Description}", Severity.Error);
+                }
+            }
+            else
+            {
+                Snackbar.Add("Ocurrió un error al procesar la solicitud, pero no se devolvieron detalles específicos.", Severity.Error);
+            }
+        }
+    }
+
+    private void TogglePasswordVisibility()
+    {
+        if (_showPassword)
+        {
+            _showPassword = false;
+            _passwordInputIcon = Icons.Material.Filled.VisibilityOff;
+            _passwordInputType = InputType.Password;
+        }
+        else
+        {
+            _showPassword = true;
+            _passwordInputIcon = Icons.Material.Filled.Visibility;
+            _passwordInputType = InputType.Text;
+        }
+    }
+
+    private async Task ConfirmDeleteUser(string userId, string userEmail)
+    {
+        var parameters = new DialogParameters
+        {
+            ["ContentText"] = $"¿Estás seguro de que deseas eliminar al usuario '{userEmail}'? Esta acción no se puede deshacer.",
+            ["SubmitButtonText"] = "Eliminar",
+            ["ButtonColor"] = MudBlazor.Color.Error
+        };
+
+        var dialog = await DialogService.ShowAsync<MudConfirmationDialog>("Confirmar Eliminación", parameters);
+        var dialogResult = await dialog.Result;
+
+        if (dialogResult != null && !dialogResult.Canceled)
+        {
+            var deleteResult = await UserService.DeleteUserAsync(userId);
+            if (deleteResult.Succeeded)
+            {
+                Snackbar.Add($"Usuario '{userEmail}' eliminado con éxito.", Severity.Success);
+                await LoadUsers();
+            }
+            else
+            {
+                if (deleteResult.Errors != null && deleteResult.Errors.Any())
+                {
+                    foreach (var error in deleteResult.Errors)
+                    {
+                        Snackbar.Add($"{error.Code}: {error.Description}", Severity.Error);
+                    }
+                }
+                else
+                {
+                    Snackbar.Add("Error al eliminar el usuario, pero no se devolvieron detalles.", Severity.Error);
+                }
+            }
+        }
+    }
+}
