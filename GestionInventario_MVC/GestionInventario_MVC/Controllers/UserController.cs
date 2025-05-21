@@ -57,7 +57,7 @@ namespace GestionInventario_MVC.Controllers
 
                 await _signInManager.SignInAsync(user, isPersistent: true);
 
-                return RedirectToAction("Index", "Transacciones");
+                return RedirectToAction("Index", "inventory");
             }
 
             foreach (var error in result.Errors)
@@ -89,7 +89,7 @@ namespace GestionInventario_MVC.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Transacciones");
+                return RedirectToAction("Index", "inventory");
             }
 
             ModelState.AddModelError(string.Empty, "Nombre de usuario o password incorrecto.");
@@ -131,7 +131,7 @@ namespace GestionInventario_MVC.Controllers
 
             await _signInManager.RefreshSignInAsync(user);
             TempData["SuccessMessage"] = "Contraseña actualizada correctamente.";
-            return RedirectToAction("Index", "Transacciones");
+            return RedirectToAction("Index", "inventory");
         }
         [Authorize]
         [HttpGet]

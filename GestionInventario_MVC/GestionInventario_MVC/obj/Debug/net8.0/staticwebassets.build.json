@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lAghOtDFBVn/5JzYZWEby8VI+Qd+OhLbw9cvIGn7PG8=",
+  "Hash": "Sdw5Aj9njsUj5RmDn6NbvIRgYucqww1Ag5sRy16Udns=",
   "Source": "GestionInventario_MVC",
   "BasePath": "_content/GestionInventario_MVC",
   "Mode": "Default",
@@ -1375,8 +1375,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "37dqggx45f",
-      "Integrity": "sdqNfZFXaISK0YNlA1h0nw/iOSXX/vTeZZ/WydiS3pw=",
+      "Fingerprint": "t8ahkaaumf",
+      "Integrity": "HWqLkuKqlBIQhrczMQa2+G8PXfpzL564B1Si5s3M3fs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2787,51 +2787,6 @@
       ]
     },
     {
-      "Route": "css/site.37dqggx45f.css",
-      "AssetFile": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3899"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"sdqNfZFXaISK0YNlA1h0nw/iOSXX/vTeZZ/WydiS3pw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 02:27:32 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "37dqggx45f"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-sdqNfZFXaISK0YNlA1h0nw/iOSXX/vTeZZ/WydiS3pw="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -2842,7 +2797,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3899"
+          "Value": "9209"
         },
         {
           "Name": "Content-Type",
@@ -2850,11 +2805,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"sdqNfZFXaISK0YNlA1h0nw/iOSXX/vTeZZ/WydiS3pw=\""
+          "Value": "\"HWqLkuKqlBIQhrczMQa2+G8PXfpzL564B1Si5s3M3fs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 02:27:32 GMT"
+          "Value": "Wed, 21 May 2025 15:42:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2864,7 +2819,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-sdqNfZFXaISK0YNlA1h0nw/iOSXX/vTeZZ/WydiS3pw="
+          "Value": "sha256-HWqLkuKqlBIQhrczMQa2+G8PXfpzL564B1Si5s3M3fs="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.t8ahkaaumf.css",
+      "AssetFile": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9209"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HWqLkuKqlBIQhrczMQa2+G8PXfpzL564B1Si5s3M3fs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 May 2025 15:42:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t8ahkaaumf"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HWqLkuKqlBIQhrczMQa2+G8PXfpzL564B1Si5s3M3fs="
         }
       ]
     },
