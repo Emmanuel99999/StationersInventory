@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6/MJgOhfzSpddg0uGhqiNeOOqkZPjbfWg+G8elR5rcg=",
+  "Hash": "ckU0IMpidutP4TM6OPn4e+FnUkZmdkChjDERYqNYFdk=",
   "Source": "GestionInventario_MVC",
   "BasePath": "_content/GestionInventario_MVC",
   "Mode": "Default",
@@ -1277,10 +1277,10 @@
       "OriginalItemSpec": "C:\\Users\\EMMANUEL\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\8.0.11\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.css",
+      "Identity": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\MudBlazor.min.css",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\",
       "BasePath": "_content/MudBlazor",
       "RelativePath": "MudBlazor.min.css",
       "AssetKind": "All",
@@ -1291,17 +1291,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "u34o0xbo4m",
-      "Integrity": "NgHobvE5wu6MFuX0QImF1lk8IP4UUN3UDirKa0WQVYc=",
+      "Fingerprint": "f7451o6lak",
+      "Integrity": "dbrztyw7cpD/dvGeaqylyRiNofbn9I08NpD/6iCdbjA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.css"
+      "OriginalItemSpec": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\MudBlazor.min.css"
     },
     {
-      "Identity": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js",
+      "Identity": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\MudBlazor.min.js",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\",
       "BasePath": "_content/MudBlazor",
       "RelativePath": "MudBlazor.min.js",
       "AssetKind": "All",
@@ -1312,11 +1312,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "gtd3sm4n1q",
-      "Integrity": "TOPYwKltorv5iM1JqqzJayZWZx7LFnfSq2AhkWFNwrg=",
+      "Fingerprint": "shgs22i5w1",
+      "Integrity": "gCxH2RI5xXVkxLFgcHgDuyoXu7IWZwdvZ5USM+27dIk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js"
+      "OriginalItemSpec": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\MudBlazor.min.js"
     },
     {
       "Identity": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\GestionInventario_MVC.styles.css",
@@ -2624,7 +2624,7 @@
   "Endpoints": [
     {
       "Route": "_content/MudBlazor/MudBlazor.min.css",
-      "AssetFile": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.css",
+      "AssetFile": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\MudBlazor.min.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2637,7 +2637,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "597813"
+          "Value": "604382"
         },
         {
           "Name": "Content-Type",
@@ -2645,23 +2645,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"NgHobvE5wu6MFuX0QImF1lk8IP4UUN3UDirKa0WQVYc=\""
+          "Value": "\"dbrztyw7cpD/dvGeaqylyRiNofbn9I08NpD/6iCdbjA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 21:02:30 GMT"
+          "Value": "Fri, 30 May 2025 08:29:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-NgHobvE5wu6MFuX0QImF1lk8IP4UUN3UDirKa0WQVYc="
+          "Value": "sha256-dbrztyw7cpD/dvGeaqylyRiNofbn9I08NpD/6iCdbjA="
         }
       ]
     },
     {
-      "Route": "_content/MudBlazor/MudBlazor.min.gtd3sm4n1q.js",
-      "AssetFile": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js",
+      "Route": "_content/MudBlazor/MudBlazor.min.f7451o6lak.css",
+      "AssetFile": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\MudBlazor.min.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2674,39 +2674,39 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "58284"
+          "Value": "604382"
         },
         {
           "Name": "Content-Type",
-          "Value": "text/javascript"
+          "Value": "text/css"
         },
         {
           "Name": "ETag",
-          "Value": "\"TOPYwKltorv5iM1JqqzJayZWZx7LFnfSq2AhkWFNwrg=\""
+          "Value": "\"dbrztyw7cpD/dvGeaqylyRiNofbn9I08NpD/6iCdbjA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 21:02:30 GMT"
+          "Value": "Fri, 30 May 2025 08:29:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "gtd3sm4n1q"
+          "Value": "f7451o6lak"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TOPYwKltorv5iM1JqqzJayZWZx7LFnfSq2AhkWFNwrg="
+          "Value": "sha256-dbrztyw7cpD/dvGeaqylyRiNofbn9I08NpD/6iCdbjA="
         },
         {
           "Name": "label",
-          "Value": "_content/MudBlazor/MudBlazor.min.js"
+          "Value": "_content/MudBlazor/MudBlazor.min.css"
         }
       ]
     },
     {
       "Route": "_content/MudBlazor/MudBlazor.min.js",
-      "AssetFile": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js",
+      "AssetFile": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\MudBlazor.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2719,7 +2719,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "58284"
+          "Value": "73018"
         },
         {
           "Name": "Content-Type",
@@ -2727,23 +2727,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TOPYwKltorv5iM1JqqzJayZWZx7LFnfSq2AhkWFNwrg=\""
+          "Value": "\"gCxH2RI5xXVkxLFgcHgDuyoXu7IWZwdvZ5USM+27dIk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 21:02:30 GMT"
+          "Value": "Fri, 30 May 2025 08:29:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TOPYwKltorv5iM1JqqzJayZWZx7LFnfSq2AhkWFNwrg="
+          "Value": "sha256-gCxH2RI5xXVkxLFgcHgDuyoXu7IWZwdvZ5USM+27dIk="
         }
       ]
     },
     {
-      "Route": "_content/MudBlazor/MudBlazor.min.u34o0xbo4m.css",
-      "AssetFile": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.css",
+      "Route": "_content/MudBlazor/MudBlazor.min.shgs22i5w1.js",
+      "AssetFile": "C:\\Users\\EMMANUEL\\.nuget\\packages\\mudblazor\\8.7.0\\staticwebassets\\MudBlazor.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2756,33 +2756,33 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "597813"
+          "Value": "73018"
         },
         {
           "Name": "Content-Type",
-          "Value": "text/css"
+          "Value": "text/javascript"
         },
         {
           "Name": "ETag",
-          "Value": "\"NgHobvE5wu6MFuX0QImF1lk8IP4UUN3UDirKa0WQVYc=\""
+          "Value": "\"gCxH2RI5xXVkxLFgcHgDuyoXu7IWZwdvZ5USM+27dIk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 21:02:30 GMT"
+          "Value": "Fri, 30 May 2025 08:29:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "u34o0xbo4m"
+          "Value": "shgs22i5w1"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-NgHobvE5wu6MFuX0QImF1lk8IP4UUN3UDirKa0WQVYc="
+          "Value": "sha256-gCxH2RI5xXVkxLFgcHgDuyoXu7IWZwdvZ5USM+27dIk="
         },
         {
           "Name": "label",
-          "Value": "_content/MudBlazor/MudBlazor.min.css"
+          "Value": "_content/MudBlazor/MudBlazor.min.js"
         }
       ]
     },
@@ -2973,7 +2973,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 23:54:04 GMT"
+          "Value": "Sat, 31 May 2025 05:42:01 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3018,7 +3018,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 23:54:04 GMT"
+          "Value": "Sat, 31 May 2025 05:42:01 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3063,7 +3063,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 23:54:04 GMT"
+          "Value": "Sat, 31 May 2025 05:42:01 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3100,7 +3100,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 23:54:04 GMT"
+          "Value": "Sat, 31 May 2025 05:42:01 GMT"
         },
         {
           "Name": "Cache-Control",

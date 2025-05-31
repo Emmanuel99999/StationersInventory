@@ -15,7 +15,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.5",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.5",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.7",
-          "MudBlazor": "8.5.1",
+          "MudBlazor": "8.7.0",
           "SendGrid": "9.29.3"
         },
         "runtime": {
@@ -1844,7 +1844,7 @@
           }
         }
       },
-      "MudBlazor/8.5.1": {
+      "MudBlazor/8.7.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "8.0.12",
           "Microsoft.AspNetCore.Components.Web": "8.0.12",
@@ -1852,8 +1852,8 @@
         },
         "runtime": {
           "lib/net8.0/MudBlazor.dll": {
-            "assemblyVersion": "8.5.1.0",
-            "fileVersion": "8.5.1.0"
+            "assemblyVersion": "8.7.0.0",
+            "fileVersion": "8.7.0.0"
           }
         }
       },
@@ -3236,12 +3236,12 @@
       "path": "mono.texttemplating/3.0.0",
       "hashPath": "mono.texttemplating.3.0.0.nupkg.sha512"
     },
-    "MudBlazor/8.5.1": {
+    "MudBlazor/8.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xzGhtY60e1fvvyI7rJSYYV0UEkvY8niKuTaqby19cb8rELd29EpPU439RVL8KjVSMy473BEcpgYWBRAoDPGl8A==",
-      "path": "mudblazor/8.5.1",
-      "hashPath": "mudblazor.8.5.1.nupkg.sha512"
+      "sha512": "sha512-dgQ2MsgJAA1y6S0KmaOcGQWIHkJKA6XedC8X4VKXGRRcS3CFtgcytzT4LAxNoklNBqeveOyiHNEk6CG8a7YHYQ==",
+      "path": "mudblazor/8.7.0",
+      "hashPath": "mudblazor.8.7.0.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",

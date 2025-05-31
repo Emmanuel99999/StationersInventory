@@ -1,4 +1,5 @@
 ﻿using GestionInventario_MVC.Models;
+using GestionInventario_MVC.Services;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 

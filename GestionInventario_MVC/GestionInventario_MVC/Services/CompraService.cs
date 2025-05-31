@@ -1,6 +1,4 @@
 ﻿using GestionInventario_MVC.Models;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using GestionInventario_MVC.Data;
 using Microsoft.EntityFrameworkCore;
 //TODO separar las clases en diferentes archivos, ya que hay muchos modelos en uno solo

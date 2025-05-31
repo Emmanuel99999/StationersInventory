@@ -1,9 +1,0 @@
-@using MudBlazor
-
-@code {
-    [CascadingParameter] MudDialogInstance MudDialog { get; set; } = default!;
-
-    [Parameter] public string ContentText { get; set; } = "¿Estás seguro?";
-    [Parameter] public string SubmitButtonText { get; set; } = "Aceptar";
-    [Parameter] public Color ButtonColor { get; set; } = Color.Primary;
-}

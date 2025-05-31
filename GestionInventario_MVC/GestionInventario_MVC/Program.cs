@@ -3,10 +3,10 @@ using MudBlazor.Services;
 using Microsoft.EntityFrameworkCore;
 using GestionInventario_MVC.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+
 using GestionInventario_MVC.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using MudBlazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,7 +37,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IPurchasesService, CompraService>();
+builder.Services.AddScoped<ICompraService, CompraService>();
 
 var app = builder.Build();
 

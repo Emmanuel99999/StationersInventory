@@ -1,11 +1,13 @@
-﻿
+﻿@using MudBlazor
+@using Microsoft.AspNetCore.Identity
+@using GestionInventario_MVC.Shared
 @page "/usermanagement"
 @inject IUserService UserService
 @inject IRoleService RoleService
 @inject ISnackbar Snackbar
 @inject IDialogService DialogService
-@using Microsoft.AspNetCore.Identity
-@using MudBlazor
+
+
 
 
 
@@ -282,39 +284,7 @@
     }
 
     private async Task ConfirmDeleteUser(string userId, string userEmail)
-    {
-        var parameters = new DialogParameters
-        {
-            ["ContentText"] = $"¿Estás seguro de que deseas eliminar al usuario '{userEmail}'? Esta acción no se puede deshacer.",
-            ["SubmitButtonText"] = "Eliminar",
-            ["ButtonColor"] = MudBlazor.Color.Error
-        };
-
-        var dialog = await DialogService.ShowAsync<MudConfirmationDialog>("Confirmar Eliminación", parameters);
-        var dialogResult = await dialog.Result;
-
-        if (dialogResult != null && !dialogResult.Canceled)
-        {
-            var deleteResult = await UserService.DeleteUserAsync(userId);
-            if (deleteResult.Succeeded)
-            {
-                Snackbar.Add($"Usuario '{userEmail}' eliminado con éxito.", Severity.Success);
-                await LoadUsers();
-            }
-            else
-            {
-                if (deleteResult.Errors != null && deleteResult.Errors.Any())
-                {
-                    foreach (var error in deleteResult.Errors)
-                    {
-                        Snackbar.Add($"{error.Code}: {error.Description}", Severity.Error);
-                    }
-                }
-                else
-                {
-                    Snackbar.Add("Error al eliminar el usuario, pero no se devolvieron detalles.", Severity.Error);
-                }
-            }
-        }
+    {//TODO arreglar sin usar BLAZOR
+        await Task.CompletedTask;
     }
 }
