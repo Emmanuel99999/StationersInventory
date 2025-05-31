@@ -1,0 +1,181 @@
+﻿@page "/rolemanagement"
+@using Microsoft.AspNetCore.Identity
+@inject IRoleService RoleService
+@inject ISnackbar Snackbar
+@inject IDialogService DialogService
+
+@attribute [Authorize(Roles = "Administrador")]
+
+<PageTitle>Role Management</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Gestión de Roles</MudText>
+
+<MudPaper Class="pa-4 mb-4" Elevation="1">
+    <MudText Typo="Typo.h6" GutterBottom="true">@(isEditMode ? "Editar Rol: " + currentRoleModel.Name : "Crear Nuevo Rol")</MudText>
+    <EditForm Model="@currentRoleModel" OnValidSubmit="HandleValidRoleSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid Spacing="1">
+            <MudItem xs="12" sm="8">
+                <MudTextField @bind-Value="currentRoleModel.Name" Label="Nombre del Rol" For="@(() => currentRoleModel.Name)" Variant="Variant.Outlined" />
+                <ValidationMessage For="@(() => currentRoleModel.Name)" />
+            </MudItem>
+            <MudItem xs="12" sm="4" Class="d-flex align-end">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Disabled="@(string.IsNullOrWhiteSpace(currentRoleModel.Name))">@(isEditMode ? "Actualizar Rol" : "Crear Rol")</MudButton>
+                @if (isEditMode)
+                {
+                    <MudButton OnClick="CancelEdit" Variant="Variant.Outlined" Color="Color.Secondary" Class="ml-2">Cancelar</MudButton>
+                }
+            </MudItem>
+        </MudGrid>
+        <ValidationSummary Class="mt-2" />
+    </EditForm>
+</MudPaper>
+
+<MudText Typo="Typo.h5" GutterBottom="true" Class="mt-6">Lista de Roles</MudText>
+<MudTable Items="@roleList" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0" Loading="@isLoading" Dense="true">
+    <HeaderContent>
+        <MudTh>ID</MudTh>
+        <MudTh>Nombre del Rol</MudTh>
+        <MudTh>Acciones</MudTh>
+    </HeaderContent>
+    <RowTemplate Context="roleContext">
+        <MudTd DataLabel="ID">@roleContext.Id</MudTd>
+        <MudTd DataLabel="Nombre del Rol">@roleContext.Name</MudTd>
+        <MudTd DataLabel="Acciones">
+            <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="() => StartEditRole(roleContext)" Color="Color.Primary" Title="Editar Rol" />
+            <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" OnClick="async () => await ConfirmDeleteRole(roleContext.Id, roleContext.Name!)" Color="Color.Error" Title="Eliminar Rol" />
+        </MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+    <NoRecordsContent>
+        <MudText>No hay roles para mostrar.</MudText>
+    </NoRecordsContent>
+    <LoadingContent>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+    </LoadingContent>
+</MudTable>
+
+@code {
+    public class RoleFormModel
+    {
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+    }
+
+    private RoleFormModel currentRoleModel = new RoleFormModel();
+    private IEnumerable<IdentityRole> roleList = new List<IdentityRole>();
+
+    private bool isEditMode = false;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRoles();
+        isLoading = false;
+    }
+
+    private async Task LoadRoles()
+    {
+        isLoading = true;
+        roleList = await RoleService.GetRolesAsync() ?? new List<IdentityRole>();
+        isLoading = false;
+        StateHasChanged();
+    }
+
+    private void StartEditRole(IdentityRole roleToEdit)
+    {
+        isEditMode = true;
+        currentRoleModel = new RoleFormModel
+        {
+            Id = roleToEdit.Id,
+            Name = roleToEdit.Name ?? ""
+        };
+    }
+
+    private void CancelEdit()
+    {
+        isEditMode = false;
+        currentRoleModel = new RoleFormModel();
+    }
+
+    private async Task HandleValidRoleSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(currentRoleModel.Name))
+        {
+            Snackbar.Add("El nombre del rol no puede estar vacío.", Severity.Warning);
+            return;
+        }
+
+        IdentityResult? operationResult = null;
+
+        if (isEditMode)
+        {
+            operationResult = await RoleService.UpdateRoleAsync(currentRoleModel.Id, currentRoleModel.Name);
+        }
+        else
+        {
+            operationResult = await RoleService.CreateRoleAsync(currentRoleModel.Name);
+        }
+
+        if (operationResult == null) // Guarda explícita para CS8602
+        {
+            Snackbar.Add("La operación no devolvió un resultado.", Severity.Error);
+            return;
+        }
+
+        if (operationResult.Succeeded)
+        {
+            Snackbar.Add(isEditMode ? "Rol actualizado con éxito." : "Rol creado con éxito.", Severity.Success);
+            currentRoleModel = new RoleFormModel();
+            isEditMode = false;
+            await LoadRoles();
+        }
+        else
+        {
+            // Aquí, operationResult no es nulo, por lo que el acceso a .Errors es seguro
+            if (operationResult.Errors.Any())
+            {
+                foreach (var error in operationResult.Errors)
+                {
+                    Snackbar.Add($"{error.Code}: {error.Description}", Severity.Error);
+                }
+            }
+            else
+            {
+                Snackbar.Add("Ocurrió un error al crear/actualizar el rol, pero no se devolvieron detalles.", Severity.Error);
+            }
+        }
+    }
+
+    private async Task ConfirmDeleteRole(string roleId, string roleName)
+    {
+        var parameters = new DialogParameters
+        {
+            ["ContentText"] = $"¿Estás seguro de que deseas eliminar el rol '{roleName}'? Esta acción podría afectar a los usuarios que tengan este rol asignado.",
+            ["SubmitButtonText"] = "Eliminar",
+            ["ButtonColor"] = Color.Error
+        };
+
+        var dialog = await DialogService.ShowAsync<MudConfirmationDialog>("Confirmar Eliminación de Rol", parameters);
+        var dialogResult = await dialog.Result;
+
+        if (!dialogResult.Canceled)
+        {
+            var deleteResult = await RoleService.DeleteRoleAsync(roleId);
+            if (deleteResult.Succeeded)
+            {
+                Snackbar.Add($"Rol '{roleName}' eliminado con éxito.", Severity.Success);
+                await LoadRoles();
+            }
+            else
+            {
+                foreach (var error in deleteResult.Errors)
+                {
+                    Snackbar.Add($"{error.Code}: {error.Description}", Severity.Error);
+                }
+            }
+        }
+    }
+}
