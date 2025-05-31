@@ -1,8 +1,13 @@
-﻿@page "/usermanagement"
+﻿
+@page "/usermanagement"
 @inject IUserService UserService
 @inject IRoleService RoleService
 @inject ISnackbar Snackbar
 @inject IDialogService DialogService
+@using Microsoft.AspNetCore.Identity
+@using MudBlazor
+
+
 
 @attribute [Authorize(Roles = "Administrador")]
 
@@ -113,6 +118,7 @@
 </MudTable>
 
 @code {
+
     public class UserFormModel
     {
         public string Id { get; set; } = string.Empty;

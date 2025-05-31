@@ -534,12 +534,12 @@
     {
         try
         {
-            proveedores = await PurchasesService.GetSuppliersAsync() ?? new List<Proveedor>();
-            ordenesCompra = await PurchasesService.GetPurchaseOrdersAsync() ?? new List<OrdenCompra>();
-            controlCreditos = await PurchasesService.GetCreditControlsAsync() ?? new List<ControlCredito>();
-            pagosProveedores = await PurchasesService.GetSupplierPaymentsAsync() ?? new List<PagoProveedor>();
-            historialCompras = await PurchasesService.GetPurchaseHistoryAsync() ?? new List<HistorialCompra>();
-            recepcionMercancias = await PurchasesService.GetMerchandiseReceptionsAsync() ?? new List<RecepcionMercancia>();
+            proveedores = await PurchasesService.GetProveedoresAsync() ?? new List<Proveedor>();
+            ordenesCompra = await PurchasesService.GetOrdenesCompraAsync() ?? new List<OrdenCompra>();
+            controlCreditos = await PurchasesService.GetControlCreditosAsync() ?? new List<ControlCredito>();
+            pagosProveedores = await PurchasesService.GetPagosProveedoresAsync() ?? new List<PagoProveedor>();
+            historialCompras = await PurchasesService.GetHistorialComprasAsync() ?? new List<HistorialCompra>();
+            recepcionMercancias = await PurchasesService.GetRecepcionMercanciasAsync() ?? new List<RecepcionMercancia>();
         }
         catch (Exception ex)
         {
@@ -615,7 +615,7 @@
     {
         try
         {
-            await PurchasesService.DeletePurchaseOrderAsync(id);
+            await PurchasesService.DeleteControlCreditoAsync(id);
             Snackbar.Add("Orden de compra eliminada.", Severity.Info);
             await LoadData();
         }
@@ -647,12 +647,12 @@
 
             if (newOrdenCompra.Id == 0)
             {
-                await PurchasesService.AddPurchaseOrderAsync(newOrdenCompra);
+                await PurchasesService.AddOrdenCompraAsync(newOrdenCompra);
                 Snackbar.Add("Orden de compra añadida con éxito.", Severity.Success);
             }
             else
             {
-                await PurchasesService.UpdatePurchaseOrderAsync(newOrdenCompra);
+                await PurchasesService.UpdateOrdenCompraAsync(newOrdenCompra);
                 Snackbar.Add("Orden de compra actualizada con éxito.", Severity.Success);
             }
 
@@ -728,7 +728,7 @@
     {
         try
         {
-            await PurchasesService.DeleteMerchandiseReceptionAsync(id);
+            await PurchasesService.DeleteRecepcionMercanciaAsync(id);
             Snackbar.Add("Recepción de mercancía eliminada.", Severity.Info);
             await LoadData();
         }
@@ -765,12 +765,12 @@
 
             if (newRecepcionMercancia.Id == 0)
             {
-                await PurchasesService.AddMerchandiseReceptionAsync(newRecepcionMercancia);
+                await PurchasesService.AddRecepcionMercanciaAsync(newRecepcionMercancia);
                 Snackbar.Add("Recepción de mercancía registrada con éxito.", Severity.Success);
             }
             else
             {
-                await PurchasesService.UpdateMerchandiseReceptionAsync(newRecepcionMercancia);
+                await PurchasesService.UpdateRecepcionMercanciaAsync(newRecepcionMercancia);
                 Snackbar.Add("Recepción de mercancía actualizada con éxito.", Severity.Success);
             }
 
@@ -827,7 +827,7 @@
     {
         try
         {
-            await PurchasesService.DeleteSupplierAsync(id);
+            await PurchasesService.DeleteProveedorAsync(id);
             Snackbar.Add("Proveedor eliminado.", Severity.Info);
             await LoadData();
         }
@@ -849,12 +849,12 @@
 
             if (newProveedor.Id == 0)
             {
-                await PurchasesService.AddSupplierAsync(newProveedor);
+                await PurchasesService.AddProveedorAsync(newProveedor);
                 Snackbar.Add("Proveedor añadido con éxito.", Severity.Success);
             }
             else
             {
-                await PurchasesService.UpdateSupplierAsync(newProveedor);
+                await PurchasesService.UpdateProveedorAsync(newProveedor);
                 Snackbar.Add("Proveedor actualizado con éxito.", Severity.Success);
             }
 
@@ -896,7 +896,7 @@
     {
         try
         {
-            await PurchasesService.DeleteCreditControlAsync(id);
+            await PurchasesService.DeleteControlCreditoAsync(id);
             Snackbar.Add("Control de crédito eliminado.", Severity.Info);
             await LoadData();
         }
@@ -922,12 +922,12 @@
 
             if (newControlCredito.Id == 0)
             {
-                await PurchasesService.AddCreditControlAsync(controlCreditoToSave);
+                await PurchasesService.AddControlCreditoAsync(controlCreditoToSave);
                 Snackbar.Add("Control de crédito añadido con éxito.", Severity.Success);
             }
             else
             {
-                await PurchasesService.UpdateCreditControlAsync(controlCreditoToSave);
+                await PurchasesService.UpdateControlCreditoAsync(controlCreditoToSave);
                 Snackbar.Add("Control de crédito actualizado con éxito.", Severity.Success);
             }
 
@@ -977,7 +977,7 @@
     {
         try
         {
-            await PurchasesService.DeleteSupplierPaymentAsync(id);
+            await PurchasesService.DeletePagoProveedorAsync(id);
             Snackbar.Add("Pago eliminado.", Severity.Info);
             await LoadData();
         }
@@ -1003,12 +1003,12 @@
 
             if (newPagoProveedor.Id == 0)
             {
-                await PurchasesService.AddSupplierPaymentAsync(pagoToSave);
+                await PurchasesService.AddPagoProveedorAsync(pagoToSave);
                 Snackbar.Add("Pago añadido con éxito.", Severity.Success);
             }
             else
             {
-                await PurchasesService.UpdateSupplierPaymentAsync(pagoToSave);
+                await PurchasesService.UpdatePagoProveedorAsync(pagoToSave);
                 Snackbar.Add("Pago actualizado con éxito.", Severity.Success);
             }
 
@@ -1063,7 +1063,7 @@
     {
         try
         {
-            await PurchasesService.DeletePurchaseHistoryAsync(id);
+            await PurchasesService.DeleteHistorialCompraAsync(id);
             Snackbar.Add("Historial eliminado.", Severity.Info);
             await LoadData();
         }
@@ -1089,12 +1089,12 @@
 
             if (newHistorialCompra.Id == 0)
             {
-                await PurchasesService.AddPurchaseHistoryAsync(historialToSave);
+                await PurchasesService.AddHistorialCompraAsync(historialToSave);
                 Snackbar.Add("Historial añadido con éxito.", Severity.Success);
             }
             else
             {
-                await PurchasesService.UpdatePurchaseHistoryAsync(historialToSave);
+                await PurchasesService.UpdateHistorialCompraAsync(historialToSave);
                 Snackbar.Add("Historial actualizado con éxito.", Severity.Success);
             }
 
