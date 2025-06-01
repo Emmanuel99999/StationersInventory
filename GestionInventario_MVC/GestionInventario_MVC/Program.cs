@@ -51,9 +51,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 // -------------------
 // 4. Autenticación JWT para las APIs
 // Poner un token/jwt seguro en tu appsettings.json y reemplazarlo aquí, o usa UserSecrets
-var jwtKey = builder.Configuration["Jwt:Key"] ?? "TU_CLAVE_SUPER_SECRETA";
-var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "TU_ISSUER";
-var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "TU_AUDIENCIA";
+var jwtKey = builder.Configuration["Jwt:Key"] ?? "CAMBIA_ESTA_LLAVE_POR_ALGO_BIEN_LARGO_Y_SEGURO";
+var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "GestionInventarioAPI";
+var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "GestionInventarioCliente";
 
 builder.Services.AddAuthentication(options =>
 {
