@@ -341,5 +341,84 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionInventario_MVC.Controllers.Api.RolesApiController",
+    "Method": "GetAll",
+    "RelativePath": "api/RolesApi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionInventario_MVC.Controllers.Api.RolesApiController",
+    "Method": "Create",
+    "RelativePath": "api/RolesApi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "GestionInventario_MVC.DTOs.RoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionInventario_MVC.Controllers.Api.RolesApiController",
+    "Method": "GetById",
+    "RelativePath": "api/RolesApi/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionInventario_MVC.Controllers.Api.RolesApiController",
+    "Method": "Update",
+    "RelativePath": "api/RolesApi/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "GestionInventario_MVC.DTOs.RoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionInventario_MVC.Controllers.Api.RolesApiController",
+    "Method": "Delete",
+    "RelativePath": "api/RolesApi/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
