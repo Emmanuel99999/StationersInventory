@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestionInventario_MVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ce777cfd9576b3b84458006aad9449d1c7881a3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22523a821db46792f8f5c2c01e409fa9b8b3878d")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestionInventario_MVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestionInventario_MVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

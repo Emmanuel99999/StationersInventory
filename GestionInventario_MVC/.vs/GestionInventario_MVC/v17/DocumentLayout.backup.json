@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\controllers\\inventorymovementapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\controllers\\inventorymovementapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\models\\inventorymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\models\\inventorymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,8 +23,12 @@
       "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\views\\home\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\views\\home\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -20,10 +36,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\EMMANUEL\\AppData\\Local\\SourceServer\\7e0091c4c1cc3da9f73a27a04e03386b2857ea123872cf3a17de5e17c6369926\\GestionInventario_MVC\\GestionInventario_MVC\\Shared\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -42,22 +54,6 @@
       "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\controllers\\userrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\controllers\\userrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\views\\userroles\\assign.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\views\\userroles\\assign.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\views\\userroles\\remove.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\views\\userroles\\remove.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\views\\userroles\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\views\\userroles\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\views\\users\\_layoutloginregister.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\views\\users\\_layoutloginregister.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -68,18 +64,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\pages\\compras.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\pages\\compras.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\views\\roles\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\views\\roles\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|c:\\users\\emmanuel\\source\\repos\\emmanuel99999\\stationersinventory\\gestioninventario_mvc\\gestioninventario_mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3F1008D9-406C-496C-97B0-8A2502E7B9AF}|GestionInventario_MVC\\GestionInventario_MVC.csproj|solutionrelative:gestioninventario_mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -89,7 +73,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -104,64 +88,77 @@
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "GestionInventario_MVC\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "GestionInventario_MVC\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T19:35:39.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InventoryMovementApiController.cs",
+              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\InventoryMovementApiController.cs",
+              "RelativeDocumentMoniker": "GestionInventario_MVC\\Controllers\\InventoryMovementApiController.cs",
+              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\InventoryMovementApiController.cs",
+              "RelativeToolTip": "GestionInventario_MVC\\Controllers\\InventoryMovementApiController.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAswFsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T19:34:28.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InventoryMovement.cs",
+              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Models\\InventoryMovement.cs",
+              "RelativeDocumentMoniker": "GestionInventario_MVC\\Models\\InventoryMovement.cs",
+              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Models\\InventoryMovement.cs",
+              "RelativeToolTip": "GestionInventario_MVC\\Models\\InventoryMovement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T19:31:57.653Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Remove.cshtml",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\UserRoles\\Remove.cshtml",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\UserRoles\\Remove.cshtml",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\UserRoles\\Remove.cshtml",
-              "RelativeToolTip": "GestionInventario_MVC\\Views\\UserRoles\\Remove.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-01T01:50:57.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Compras.razor",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Pages\\Compras.razor",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\Pages\\Compras.razor",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Pages\\Compras.razor",
-              "RelativeToolTip": "GestionInventario_MVC\\Pages\\Compras.razor",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-01T00:07:53.017Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "GestionInventario_MVC\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAowCUAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAowC8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-01T00:03:50.759Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Shared\\MainLayout.razor",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Shared\\MainLayout.razor",
               "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Shared\\MainLayout.razor",
               "RelativeToolTip": "GestionInventario_MVC\\Shared\\MainLayout.razor",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAawGYAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-01T00:08:06.105Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
@@ -174,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "_LayoutLoginRegister.cshtml",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Users\\_LayoutLoginRegister.cshtml",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\Users\\_LayoutLoginRegister.cshtml",
@@ -187,85 +184,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Manage.cshtml",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\UserRoles\\Manage.cshtml",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\UserRoles\\Manage.cshtml",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\UserRoles\\Manage.cshtml",
-              "RelativeToolTip": "GestionInventario_MVC\\Views\\UserRoles\\Manage.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-31T23:37:30.091Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Assign.cshtml",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\UserRoles\\Assign.cshtml",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\UserRoles\\Assign.cshtml",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\UserRoles\\Assign.cshtml",
-              "RelativeToolTip": "GestionInventario_MVC\\Views\\UserRoles\\Assign.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-31T23:33:50.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Roles\\Edit.cshtml",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\Roles\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Roles\\Edit.cshtml",
-              "RelativeToolTip": "GestionInventario_MVC\\Views\\Roles\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-31T23:32:05.147Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Program.cs",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Program.cs",
               "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Program.cs",
               "RelativeToolTip": "GestionInventario_MVC\\Program.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAcwFEAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAMwKQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T23:11:14.026Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\appsettings.json",
+              "RelativeDocumentMoniker": "GestionInventario_MVC\\appsettings.json",
+              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\appsettings.json",
+              "RelativeToolTip": "GestionInventario_MVC\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-31T23:21:07.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\HomeController.cs",
               "RelativeToolTip": "GestionInventario_MVC\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAApwDQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAawDQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T03:30:18.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Logout.cshtml",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Home\\Logout.cshtml",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\Home\\Logout.cshtml",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Home\\Logout.cshtml",
-              "RelativeToolTip": "GestionInventario_MVC\\Views\\Home\\Logout.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-01T03:24:59.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\AppData\\Local\\SourceServer\\7e0091c4c1cc3da9f73a27a04e03386b2857ea123872cf3a17de5e17c6369926\\GestionInventario_MVC\\GestionInventario_MVC\\Shared\\MainLayout.razor",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\7e0091c4c1cc3da9f73a27a04e03386b2857ea123872cf3a17de5e17c6369926\\GestionInventario_MVC\\GestionInventario_MVC\\Shared\\MainLayout.razor",
@@ -278,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "_Host.cshtml",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Pages\\_Host.cshtml",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Pages\\_Host.cshtml",
@@ -292,32 +250,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "UserRolesController.cs",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\UserRolesController.cs",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\Controllers\\UserRolesController.cs",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\UserRolesController.cs",
-              "RelativeToolTip": "GestionInventario_MVC\\Controllers\\UserRolesController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwDYAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T23:26:08.006Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\UserController.cs",
               "RelativeToolTip": "GestionInventario_MVC\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAQwGgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAAwGoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T23:25:04.743Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\Home\\Index.cshtml",
@@ -330,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "ChangePassword.cshtml",
               "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Views\\Users\\ChangePassword.cshtml",
               "RelativeDocumentMoniker": "GestionInventario_MVC\\Views\\Users\\ChangePassword.cshtml",
@@ -343,28 +288,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "RolesController.cs",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\RolesController.cs",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\Controllers\\RolesController.cs",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Controllers\\RolesController.cs",
-              "RelativeToolTip": "GestionInventario_MVC\\Controllers\\RolesController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAowFUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T23:24:24.992Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\appsettings.json",
-              "RelativeDocumentMoniker": "GestionInventario_MVC\\appsettings.json",
-              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\appsettings.json",
-              "RelativeToolTip": "GestionInventario_MVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-31T23:21:07.32Z",
+              "DocumentIndex": 15,
+              "Title": "Compras.razor",
+              "DocumentMoniker": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Pages\\Compras.razor",
+              "RelativeDocumentMoniker": "GestionInventario_MVC\\Pages\\Compras.razor",
+              "ToolTip": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\Pages\\Compras.razor",
+              "RelativeToolTip": "GestionInventario_MVC\\Pages\\Compras.razor",
+              "ViewState": "AgIAAF0AAAAAAAAAAIBpwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-01T00:07:53.017Z",
               "EditorCaption": ""
             }
           ]
