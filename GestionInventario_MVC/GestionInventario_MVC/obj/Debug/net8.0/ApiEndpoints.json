@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "GestionInventario_MVC.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "GestionInventario_MVC.Controllers.AuthController\u002BLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GestionInventario_MVC.Controllers.InventoryMovementApiController",
     "Method": "GetInventoryMovements",
     "RelativePath": "api/InventoryMovementApi",
