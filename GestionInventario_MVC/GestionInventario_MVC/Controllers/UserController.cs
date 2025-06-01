@@ -96,8 +96,16 @@ namespace GestionInventario_MVC.Controllers
 
             return View(model);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Users");
+        }
 
-                [Authorize]
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> ChangePassword(string currentPassword, string newPassword, string confirmPassword)
         {

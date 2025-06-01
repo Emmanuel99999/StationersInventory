@@ -27,7 +27,11 @@
     <script src="_framework/blazor.server.js"></script> @* Script de Blazor Server *@
 
     <script src="_content/MudBlazor/MudBlazor.min.js"></script> @* Script de MudBlazor *@
-    
+    <script>
+        window.submitLogoutForm = function() {
+            document.getElementById('logoutForm').submit();
+        }
+    </script>
 
 </body>
 </html>

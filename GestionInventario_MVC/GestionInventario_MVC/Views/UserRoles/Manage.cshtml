@@ -1,0 +1,49 @@
+@using GestionInventario_MVC.Areas.Identity.Data;
+@model GestionInventario_MVCUser
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Administrar roles de usuario";
+    var allRoles = ViewBag.Roles as IEnumerable<IdentityRole>;
+    var assignedRoles = ViewBag.AssignedRoles as IList<string>;
+}
+
+<h2>Gestión de roles para: <b>@Model.UserName</b> (@Model.Email)</h2>
+
+<h4>Roles actuales:</h4>
+@if (assignedRoles != null && assignedRoles.Any())
+{
+    <ul>
+        @foreach (var role in assignedRoles)
+        {
+            <li>
+                @role
+                <form asp-action="Remove" method="post" class="d-inline">
+                    <input type="hidden" name="userId" value="@Model.Id" />
+                    <input type="hidden" name="roleName" value="@role" />
+                    <button type="submit" class="btn btn-danger btn-sm ms-2">Quitar</button>
+                </form>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p class="text-muted">Este usuario no tiene roles asignados.</p>
+}
+
+<h4>Agregar nuevo rol:</h4>
+<form asp-action="Assign" method="post">
+    <input type="hidden" name="userId" value="@Model.Id" />
+    <select name="roleName" class="form-select mb-2">
+        @foreach (var role in allRoles)
+        {
+            if (assignedRoles == null || !assignedRoles.Contains(role.Name))
+            {
+                <option value="@role.Name">@role.Name</option>
+            }
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">Asignar Rol</button>
+</form>
+
+<a asp-action="Assign" class="btn btn-secondary mt-3">Volver a la lista de usuarios</a>

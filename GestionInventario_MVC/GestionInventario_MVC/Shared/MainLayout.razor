@@ -1,11 +1,17 @@
-﻿@inherits LayoutComponentBase
+﻿@using System.Security.Claims
+@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Routing
 @using MudBlazor
+@using Microsoft.JSInterop
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
 @inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
 
 <PageTitle>GestionInventario_MVC</PageTitle>
-<CssLoader />
 
 @* --- INICIO: AÑADIR PROVEEDORES MUD BLAZOR --- *@
 <MudThemeProvider />
@@ -13,7 +19,15 @@
 <MudSnackbarProvider />
 <MudPopoverProvider /> @* <-- EL QUE FALTABA *@
 @* --- FIN: AÑADIR PROVEEDORES MUD BLAZOR --- *@
+@code {
+    private ClaimsPrincipal user;
 
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        user = authState.User;
+    }
+}
 <div class="page">
     <div class="sidebar">
         <nav>
@@ -36,11 +50,43 @@
                                 Compras
                      </NavLink>
                 </li>
-                <li class="logout-item">
-                    <NavLink href="/HOME/INDEX" class="logout-link">
-                        <MudIcon Icon="@Icons.Material.Filled.Logout" Class="nav-icon" />
-                        Cerrar Sesión
+                <li>
+                    <NavLink href="/Users/ChangePassword" class="@GetNavLinkClass("/Users/ChangePassword")">
+                        <MudIcon Icon="@Icons.Material.Filled.VpnKey" Class="nav-icon" />
+                        Cambiar contraseña
                     </NavLink>
+                </li>
+                <li>
+                    <NavLink href="/Users/EditProfile" class="@GetNavLinkClass("/Users/EditProfile")">
+                        <MudIcon Icon="@Icons.Material.Filled.Edit" Class="nav-icon" />
+                        Editar perfil
+                    </NavLink>
+                </li>
+
+                <!-- Agrega más enlaces de administración aquí -->
+
+
+                @* SOLO para admins autenticados *@
+                @if (user.Identity.IsAuthenticated && user.IsInRole("Administrador"))
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Roles/Index">
+                                <i class="bi bi-person-gear"></i> Gestión de Roles
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/UserRoles/Assign">
+                                <i class="bi bi-shield-shaded"></i> Asignar Roles
+                            </a>
+                        </li>
+                    </ul>
+                }
+                <li>
+                    <a href="/home/logout" class="@GetNavLinkClass("/home/logout") nav-link">
+                        <MudIcon Icon="@Icons.Material.Filled.Logout" Class="nav-icon" />
+                        Cerrar sesión
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -57,6 +103,11 @@
     private string GetNavLinkClass(string path)
     {
         return NavigationManager.Uri.EndsWith(path) ? "active" : "";
+    }
+    private async Task DoLogout()
+    {
+        // JavaScript interop para enviar el formulario de logout
+        await JS.InvokeVoidAsync("submitLogoutForm");
     }
 }
 

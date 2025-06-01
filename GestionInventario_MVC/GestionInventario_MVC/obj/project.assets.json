@@ -671,11 +671,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.12": {
+      "Microsoft.AspNetCore.Authorization/8.0.16": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.12",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "Microsoft.AspNetCore.Metadata": "8.0.16",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
           "Microsoft.Extensions.Options": "8.0.2"
         },
         "compile": {
@@ -689,11 +689,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.12": {
+      "Microsoft.AspNetCore.Components/8.0.16": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.12",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.12"
+          "Microsoft.AspNetCore.Authorization": "8.0.16",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.16"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -706,10 +706,27 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.12": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.16": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Authorization/8.0.16": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "8.0.16",
+          "Microsoft.AspNetCore.Components": "8.0.16"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.AspNetCore.Components.Forms/8.0.12": {
@@ -822,7 +839,7 @@
           "buildMultiTargeting/Microsoft.AspNetCore.Identity.UI.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.12": {
+      "Microsoft.AspNetCore.Metadata/8.0.16": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -4029,10 +4046,10 @@
         "mailkit.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Authorization/8.0.12": {
-      "sha512": "x3E6p69tEktHakgch0cR771EGvJmxRz86HD3YAg0Mag8IimC/OcZtPBwp48zLJvnxj3W4ZELSQ+gZStgClzuRg==",
+    "Microsoft.AspNetCore.Authorization/8.0.16": {
+      "sha512": "4msfwr7vdFQgQdmN54kqeY01GRG99sw2gTC8eWQ1eRxq6oOGNmGY0wIl9vk3xZN6CdIdXq2hwFSYGw2frfHLOw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authorization/8.0.12",
+      "path": "microsoft.aspnetcore.authorization/8.0.16",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4044,14 +4061,14 @@
         "lib/net8.0/Microsoft.AspNetCore.Authorization.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.xml",
-        "microsoft.aspnetcore.authorization.8.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.authorization.8.0.16.nupkg.sha512",
         "microsoft.aspnetcore.authorization.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components/8.0.12": {
-      "sha512": "oNKQXyuEpfGGcG8bRbl4kKzkTENkAWTZWmT7W69j2srrpbruM9JCguxBZeOqT1ER48hSEdxuMB0EtR0sL/6EKA==",
+    "Microsoft.AspNetCore.Components/8.0.16": {
+      "sha512": "53foNz+R1KAe404RgmLxjpcqORZM23NLsS5Qe8zIIt02ThMPCa9IWC9WULwTr60g6kcTt1HUnExhrnvsVCl0SQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.components/8.0.12",
+      "path": "microsoft.aspnetcore.components/8.0.16",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4059,14 +4076,14 @@
         "THIRD-PARTY-NOTICES.txt",
         "lib/net8.0/Microsoft.AspNetCore.Components.dll",
         "lib/net8.0/Microsoft.AspNetCore.Components.xml",
-        "microsoft.aspnetcore.components.8.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.components.8.0.16.nupkg.sha512",
         "microsoft.aspnetcore.components.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components.Analyzers/8.0.12": {
-      "sha512": "pZVRMJrtscHDxZE9JvdlIWin5zPHhbCod/J6g7hP4tyLyxFI7w+2XT9KRR9oo5pSGBHOWl9SHvSoRTh6UVihBg==",
+    "Microsoft.AspNetCore.Components.Analyzers/8.0.16": {
+      "sha512": "now9Taa3SMu7nWKe1sLExn86AVgo1NZej5u759UMvR74/OWzvDy2aN+uQE7twYW1mHTtR5ILjE7cX4L5WSm2Pg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.components.analyzers/8.0.12",
+      "path": "microsoft.aspnetcore.components.analyzers/8.0.16",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4075,8 +4092,23 @@
         "analyzers/dotnet/cs/Microsoft.AspNetCore.Components.Analyzers.dll",
         "build/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
         "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
-        "microsoft.aspnetcore.components.analyzers.8.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.components.analyzers.8.0.16.nupkg.sha512",
         "microsoft.aspnetcore.components.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.Authorization/8.0.16": {
+      "sha512": "TsVr6Iwp2rxNzUmAiAY7+fCoxxQTfa5KuACBnucNcLnHpfc/BUiJS6v2mkr7inRmtb4zkTCJSJNlOCoqzILFwA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.authorization/8.0.16",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.xml",
+        "microsoft.aspnetcore.components.authorization.8.0.16.nupkg.sha512",
+        "microsoft.aspnetcore.components.authorization.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Components.Forms/8.0.12": {
@@ -4280,10 +4312,10 @@
         "staticwebassets/V5/lib/jquery/dist/jquery.min.map"
       ]
     },
-    "Microsoft.AspNetCore.Metadata/8.0.12": {
-      "sha512": "TVB3Kcm8CBvFJ3roOCJ4XcTCiY/G2pUjKIm6M1QyslJYlJGmL6WFdr6o8OsT4jdqDnB2Heu+MQtQsyWMpTaAlw==",
+    "Microsoft.AspNetCore.Metadata/8.0.16": {
+      "sha512": "sgavJHc/BLiGxFiw2frEoFZld+FXDQLyvS+3bzofSD1l2RXe6xkFpcWn1BFxJVqGq5w30hzdkwCbKYYTXax7OA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.metadata/8.0.12",
+      "path": "microsoft.aspnetcore.metadata/8.0.16",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4295,7 +4327,7 @@
         "lib/net8.0/Microsoft.AspNetCore.Metadata.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.xml",
-        "microsoft.aspnetcore.metadata.8.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.metadata.8.0.16.nupkg.sha512",
         "microsoft.aspnetcore.metadata.nuspec"
       ]
     },
@@ -8699,6 +8731,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "MailKit >= 4.12.1",
+      "Microsoft.AspNetCore.Components.Authorization >= 8.0.16",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.11",
       "Microsoft.AspNetCore.Identity.UI >= 8.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.5",
@@ -8762,6 +8795,10 @@
           "MailKit": {
             "target": "Package",
             "version": "[4.12.1, )"
+          },
+          "Microsoft.AspNetCore.Components.Authorization": {
+            "target": "Package",
+            "version": "[8.0.16, )"
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",

@@ -1,0 +1,62 @@
+@using GestionInventario_MVC.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<GestionInventario_MVCUser>
+@{
+    ViewData["Title"] = "Asignar Roles a Usuarios";
+    var roles = ViewBag.Roles as IEnumerable<IdentityRole>;
+    var userRoles = ViewBag.UserRoles as Dictionary<string, IList<string>>;
+}
+
+<h2>Asignar Roles a Usuarios</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Roles actuales</th>
+            <th>Asignar nuevo rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    @if (userRoles != null && userRoles.ContainsKey(user.Id) && userRoles[user.Id].Any())
+                    {
+                        foreach (var roleName in userRoles[user.Id])
+                        {
+                            <span class="badge bg-info me-1">@roleName</span>
+                            <a class="btn btn-danger btn-sm"
+                               asp-action="Remove"
+                               asp-route-userId="@user.Id"
+                               asp-route-roleName="@roleName"
+                               title="Quitar rol">
+                                &times;
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <span class="text-muted">Sin roles</span>
+                    }
+                </td>
+                <td>
+                    <form asp-action="Assign" method="post" class="d-flex align-items-center">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <select name="roleName" class="form-select me-2">
+                            @foreach (var role in roles)
+                            {
+                                <option value="@role.Name">@role.Name</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm">Asignar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

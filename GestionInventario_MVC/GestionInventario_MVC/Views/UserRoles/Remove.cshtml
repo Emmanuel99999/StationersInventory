@@ -1,0 +1,21 @@
+@using Microsoft.AspNetCore.Identity
+@using GestionInventario_MVC.Areas.Identity.Data // tu tipo de usuario
+@using System.Linq
+@{
+    ViewData["Title"] = "Quitar Rol";
+    string userName = ViewBag.UserName as string;
+    string roleName = ViewBag.RoleName as string;
+    string userId = ViewBag.UserId as string;
+}
+<h2>Confirmar quitar rol</h2>
+
+<div class="alert alert-warning">
+    ¿Confirmas quitar el rol <b>@roleName</b> del usuario <b>@userName</b>?
+</div>
+
+<form asp-action="RemoveConfirmed" method="post">
+    <input type="hidden" name="userId" value="@userId" />
+    <input type="hidden" name="roleName" value="@roleName" />
+    <button type="submit" class="btn btn-danger">Sí, quitar rol</button>
+    <a asp-action="Assign" class="btn btn-secondary">Cancelar</a>
+</form>

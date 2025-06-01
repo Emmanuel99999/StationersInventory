@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Crear Rol";
+}
+<h2>Crear Nuevo Rol</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label for="roleName" class="form-label">Nombre del rol</label>
+        <input type="text" class="form-control" id="roleName" name="roleName" required />
+        @if (ViewData.ModelState["roleName"]?.Errors.Count > 0)
+        {
+            <span class="text-danger">@ViewData.ModelState["roleName"].Errors[0].ErrorMessage</span>
+        }
+    </div>
+    <button type="submit" class="btn btn-success">Crear</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+</form>
+
+@foreach (var err in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+{
+    <div class="text-danger">@err.ErrorMessage</div>
+}
