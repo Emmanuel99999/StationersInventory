@@ -55,29 +55,37 @@ var jwtKey = builder.Configuration["Jwt:Key"] ?? "CAMBIA_ESTA_LLAVE_POR_ALGO_BIE
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "GestionInventarioAPI";
 var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "GestionInventarioCliente";
 
+
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme; // Para Razor
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; // Para API
 })
-.AddCookie(options => { // <- Para la web
-    options.LoginPath = "/Users/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
 })
-.AddJwtBearer(options => { // <- Para la API
+.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+{
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidateAudience = true,
-        ValidateLifetime = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
         ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtIssuer,
-        ValidAudience = jwtAudience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
 
 // -------------------
+// Configuración de antiforgery
+builder.Services.AddAntiforgery(options => {
+    options.HeaderName = "X-CSRF-TOKEN";
+});
+
+
 // 5. CORS
 builder.Services.AddCors(options =>
 {
