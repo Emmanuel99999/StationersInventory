@@ -5,6 +5,7 @@ using GestionInventario_MVC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using GestionInventario_MVC.Areas.Identity.Data;
+using GestionInventario_MVC.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.IdentityModel.Tokens;
@@ -129,6 +130,7 @@ builder.Services.AddSwaggerGen(c =>
 // 7. Servicios personalizados
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICompraService, CompraService>();
+builder.Services.AddScoped<IRoleService, GestionInventario_MVC.Services.Implementations.RoleService>();
 
 // -------------------
 // 8. Construir la aplicación
