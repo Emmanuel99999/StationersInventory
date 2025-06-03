@@ -43,7 +43,7 @@ builder.Services.AddTransient<IEmailSender, EmailSender>();
 // 3. Configuración personalizada de cookies (opcional pero recomendado)
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Identity/Account/Login";
+    options.LoginPath = "/Users/Login";
     options.LogoutPath = "/Identity/Account/Logout";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
