@@ -5,6 +5,7 @@ using GestionInventario_MVC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using GestionInventario_MVC.Areas.Identity.Data;
+using GestionInventario_MVC.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.IdentityModel.Tokens;
@@ -55,29 +56,37 @@ var jwtKey = builder.Configuration["Jwt:Key"] ?? "CAMBIA_ESTA_LLAVE_POR_ALGO_BIE
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "GestionInventarioAPI";
 var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "GestionInventarioCliente";
 
+
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme; // Para Razor
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; // Para API
 })
-.AddCookie(options => { // <- Para la web
-    options.LoginPath = "/Users/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
 })
-.AddJwtBearer(options => { // <- Para la API
+.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+{
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidateAudience = true,
-        ValidateLifetime = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
         ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtIssuer,
-        ValidAudience = jwtAudience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
 
 // -------------------
+// Configuración de antiforgery
+builder.Services.AddAntiforgery(options => {
+    options.HeaderName = "X-CSRF-TOKEN";
+});
+
+
 // 5. CORS
 builder.Services.AddCors(options =>
 {
@@ -121,6 +130,7 @@ builder.Services.AddSwaggerGen(c =>
 // 7. Servicios personalizados
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICompraService, CompraService>();
+builder.Services.AddScoped<IRoleService, GestionInventario_MVC.Services.Implementations.RoleService>();
 
 // -------------------
 // 8. Construir la aplicación

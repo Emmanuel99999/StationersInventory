@@ -98,7 +98,15 @@
             });
         });
     </script>
-
+    <script>
+        // Redirigir si ya está autenticado
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken');
+            if (token && window.location.pathname.toLowerCase() === '/account/login') {
+                window.location.href = '/';
+            }
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
