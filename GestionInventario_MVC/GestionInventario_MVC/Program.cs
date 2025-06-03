@@ -23,7 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices();
-builder.Services.AddControllersWithViews();
+
 builder.Services.AddControllers(); // <--- necesario para APIs
 
 // -------------------
@@ -59,27 +59,22 @@ var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "GestionInventarioCli
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme; // Para Razor
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; // Para API
-})
-.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
-{
-    options.LoginPath = "/Account/Login";
-    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.DefaultScheme = IdentityConstants.ApplicationScheme; // o CookieAuthenticationDefaults.AuthenticationScheme
+    options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
 })
 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidateAudience = true,
+        // ...etc
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
-
+builder.Services.AddControllersWithViews();
 // -------------------
 // Configuración de antiforgery
 builder.Services.AddAntiforgery(options => {

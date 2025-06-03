@@ -743,6 +743,10 @@
         "additionalProperties": false
       },
       "LoginRequest": {
+        "required": [
+          "password",
+          "username"
+        ],
         "type": "object",
         "properties": {
           "username": {

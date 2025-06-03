@@ -20,12 +20,12 @@
 <MudPopoverProvider /> @* <-- EL QUE FALTABA *@
 @* --- FIN: AÑADIR PROVEEDORES MUD BLAZOR --- *@
 @code {
-    private ClaimsPrincipal user;
+    private ClaimsPrincipal usuario;
 
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        user = authState.User;
+        usuario = authState.User;
     }
 }
 <div class="page">
@@ -67,7 +67,7 @@
 
 
                 @* SOLO para admins autenticados *@
-                @if (user.Identity.IsAuthenticated && user.IsInRole("Administrador"))
+                @if (usuario.Identity.IsAuthenticated && usuario.IsInRole("Administrador"))
                 {
                     <ul class="navbar-nav">
                         <li class="nav-item">

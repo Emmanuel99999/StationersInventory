@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Yq/MZBv67ed9B3C7f3RwYwuqqyyEegPvBc/YjAbF/uE=",
+  "Hash": "+MNLtqREeJ+EEt58CtVyLm/gsGhswrIHHD6L1cZUXg0=",
   "Source": "GestionInventario_MVC",
   "BasePath": "_content/GestionInventario_MVC",
   "Mode": "Default",
@@ -1382,6 +1382,27 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\css\\start.css",
+      "SourceId": "GestionInventario_MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\",
+      "BasePath": "_content/GestionInventario_MVC",
+      "RelativePath": "css/start#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8s5qcktrci",
+      "Integrity": "OHT7ECV9bTLWOYQtzarE/TClTUhzBtUoxk/ile9Fx7s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\start.css"
+    },
+    {
       "Identity": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\favicon.ico",
       "SourceId": "GestionInventario_MVC",
       "SourceType": "Discovered",
@@ -1401,6 +1422,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\js\\authInterceptor.js",
+      "SourceId": "GestionInventario_MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\",
+      "BasePath": "_content/GestionInventario_MVC",
+      "RelativePath": "js/authInterceptor#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "iacray8f6m",
+      "Integrity": "+sgZnuKEWSZhAzwdjRXIXZHT8AbQqgBK0kA+jzkDhhY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\authInterceptor.js"
     },
     {
       "Identity": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\js\\site.js",
@@ -2865,6 +2907,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-HWqLkuKqlBIQhrczMQa2+G8PXfpzL564B1Si5s3M3fs="
+        }
+      ]
+    },
+    {
+      "Route": "css/start.8s5qcktrci.css",
+      "AssetFile": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\css\\start.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3047"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OHT7ECV9bTLWOYQtzarE/TClTUhzBtUoxk/ile9Fx7s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 21:23:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8s5qcktrci"
+        },
+        {
+          "Name": "label",
+          "Value": "css/start.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OHT7ECV9bTLWOYQtzarE/TClTUhzBtUoxk/ile9Fx7s="
+        }
+      ]
+    },
+    {
+      "Route": "css/start.css",
+      "AssetFile": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\css\\start.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3047"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OHT7ECV9bTLWOYQtzarE/TClTUhzBtUoxk/ile9Fx7s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 21:23:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OHT7ECV9bTLWOYQtzarE/TClTUhzBtUoxk/ile9Fx7s="
         }
       ]
     },
@@ -5331,6 +5455,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+        }
+      ]
+    },
+    {
+      "Route": "js/authInterceptor.iacray8f6m.js",
+      "AssetFile": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\js\\authInterceptor.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "816"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+sgZnuKEWSZhAzwdjRXIXZHT8AbQqgBK0kA+jzkDhhY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 21:23:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "iacray8f6m"
+        },
+        {
+          "Name": "label",
+          "Value": "js/authInterceptor.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+sgZnuKEWSZhAzwdjRXIXZHT8AbQqgBK0kA+jzkDhhY="
+        }
+      ]
+    },
+    {
+      "Route": "js/authInterceptor.js",
+      "AssetFile": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\js\\authInterceptor.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "816"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+sgZnuKEWSZhAzwdjRXIXZHT8AbQqgBK0kA+jzkDhhY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 21:23:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+sgZnuKEWSZhAzwdjRXIXZHT8AbQqgBK0kA+jzkDhhY="
         }
       ]
     },

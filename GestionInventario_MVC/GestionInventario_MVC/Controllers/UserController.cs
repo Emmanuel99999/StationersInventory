@@ -9,6 +9,7 @@ using Microsoft.Data.SqlClient; // Necesario para SqlParameter
 
 namespace GestionInventario_MVC.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly UserManager<GestionInventario_MVCUser> _userManager;

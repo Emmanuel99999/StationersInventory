@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using GestionInventario_MVC.Data;    // Ajusta el namespace si tu DbContext está en otro lado
 using GestionInventario_MVC.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace GestionInventario_MVC.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductApiController : ControllerBase
     {
         private readonly AppDbContext _context;

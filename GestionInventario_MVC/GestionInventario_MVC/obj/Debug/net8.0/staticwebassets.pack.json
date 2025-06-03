@@ -9,8 +9,16 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\css\\start.css",
+      "PackagePath": "staticwebassets\\css\\start.css"
+    },
+    {
       "Id": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\js\\authInterceptor.js",
+      "PackagePath": "staticwebassets\\js\\authInterceptor.js"
     },
     {
       "Id": "C:\\Users\\EMMANUEL\\source\\repos\\Emmanuel99999\\StationersInventory\\GestionInventario_MVC\\GestionInventario_MVC\\wwwroot\\js\\site.js",

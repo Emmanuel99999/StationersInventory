@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using GestionInventario_MVC.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestionInventario_MVC.Controllers
 {

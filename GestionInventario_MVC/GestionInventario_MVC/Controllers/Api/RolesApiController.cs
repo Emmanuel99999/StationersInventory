@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using GestionInventario_MVC.Services.Interfaces;
 using GestionInventario_MVC.DTOs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace GestionInventario_MVC.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Administrador")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class RolesApiController : ControllerBase
     {
         private readonly IRoleService _roleService;
