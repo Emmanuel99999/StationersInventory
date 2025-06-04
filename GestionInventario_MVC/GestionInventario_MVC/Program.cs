@@ -175,3 +175,4 @@ app.MapRazorPages();
 app.MapFallbackToPage("/_Host");
 
 app.Run();
+public partial class Program { }

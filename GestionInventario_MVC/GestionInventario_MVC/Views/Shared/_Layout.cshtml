@@ -42,7 +42,41 @@
                     {
                         <a href="/inventory" class="btn btn-primary me-2">Inventario</a>
                         <a href="/compras" class="btn btn-primary me-2">Compras</a>
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Reportes
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/Reportes/Ventas" class="dropdown-item">
+                                        <i class="bi bi-receipt"></i> Reporte de Ventas
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Reportes/Compras" class="dropdown-item">
+                                        <i class="bi bi-cart-check"></i> Reporte de Compras
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Reportes/Inventario" class="dropdown-item">
+                                        <i class="bi bi-box-seam"></i> Reporte de Inventario
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Analisis/ProductosMasVendidos" class="dropdown-item">
+                                        <i class="bi bi-box-seam"></i> Productos más vendidos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Estadisticas/GraficosTendencia" class="dropdown-item">
+                                        <i class="bi bi-box-seam"></i> Gráficos de tendencias
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
                         <a href="/home/logout" class="btn btn-primary me-2">Cerrar sesión</a>
+
                     }
                     else
                     {

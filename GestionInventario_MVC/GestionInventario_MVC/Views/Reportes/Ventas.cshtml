@@ -1,0 +1,29 @@
+@model IEnumerable<GestionInventario_MVC.Models.Venta>
+
+@{
+    ViewData["Title"] = "Reporte de Ventas";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venta in Model)
+        {
+            <tr>
+                <td>@venta.Id</td>
+                <td>@venta.Cliente</td>
+                <td>@venta.Fecha.ToShortDateString()</td>
+                <td>@venta.Total.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

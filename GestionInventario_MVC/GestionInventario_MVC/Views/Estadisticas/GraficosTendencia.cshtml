@@ -1,0 +1,54 @@
+@model IEnumerable<GestionInventario_MVC.Models.TendenciaVentaMensual>
+
+@{
+    ViewData["Title"] = "Gráficos de Tendencias y Estadísticas";
+    var meses = Model.Select(m => m.Mes).ToArray();
+    var ventas = Model.Select(m => m.Ventas).ToArray();
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <canvas id="ventasLineChart" height="90"></canvas>
+    </div>
+    <div class="col-md-4">
+        <h5>Estadísticas del Año:</h5>
+        <ul>
+            <li><strong>Total de Ventas:</strong> @ViewBag.TotalVentasAnio</li>
+            <li><strong>Promedio Mensual:</strong> @string.Format("{0:F1}", ViewBag.PromedioMensual)</li>
+            <li><strong>Mes con más ventas:</strong> @ViewBag.MaximoMes (@ViewBag.MaximoMesVentas ventas)</li>
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('ventasLineChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(meses)),
+                datasets: [{
+                    label: 'Ventas mensuales de papelería',
+                    data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ventas)),
+                    fill: false,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.3)',
+                    tension: 0.2,
+                    pointBorderColor: 'blue',
+                    pointBackgroundColor: 'white',
+                    pointRadius: 5,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+    </script>
+}

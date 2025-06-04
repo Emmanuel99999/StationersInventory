@@ -14,7 +14,6 @@ namespace GestionInventario_MVC.Data
             : base(options)
         {
         }
-
         public DbSet<Product> Products { get; set; }
         public DbSet<InventoryMovement> InventoryMovements { get; set; } 
         public DbSet<Proveedor> Proveedores { get; set; }

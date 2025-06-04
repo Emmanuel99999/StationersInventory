@@ -1,0 +1,29 @@
+@model IEnumerable<GestionInventario_MVC.Models.Compra>
+
+@{
+    ViewData["Title"] = "Reporte de Compras";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Proveedor</th>
+            <th>Fecha</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var compra in Model)
+        {
+            <tr>
+                <td>@compra.Id</td>
+                <td>@compra.Proveedor</td>
+                <td>@compra.Fecha.ToShortDateString()</td>
+                <td>@compra.Total.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

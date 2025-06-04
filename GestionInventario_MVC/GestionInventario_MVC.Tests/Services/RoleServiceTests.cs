@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Moq;
 using Xunit;
 
-namespace Tests.Services
+namespace GestionInventario_MVC.Test.services
 {
 	public class RoleServiceTests
 	{

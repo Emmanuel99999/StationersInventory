@@ -223,6 +223,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/EMMANUEL/source/repos/Emmanuel99999/StationersInventory/GestionInventario_MVC/GestionInventario_MVC/Views/Analisis/ProductosMasVendidos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbGlzaXNcUHJvZHVjdG9zTWFzVmVuZGlkb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/EMMANUEL/source/repos/Emmanuel99999/StationersInventory/GestionInventario_MVC/GestionInventario_MVC/Views/Estadisticas/GraficosTendencia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRpc3RpY2FzXEdyYWZpY29zVGVuZGVuY2lhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/EMMANUEL/source/repos/Emmanuel99999/StationersInventory/GestionInventario_MVC/GestionInventario_MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -233,6 +241,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/EMMANUEL/source/repos/Emmanuel99999/StationersInventory/GestionInventario_MVC/GestionInventario_MVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/EMMANUEL/source/repos/Emmanuel99999/StationersInventory/GestionInventario_MVC/GestionInventario_MVC/Views/Reportes/Compras.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcQ29tcHJhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/EMMANUEL/source/repos/Emmanuel99999/StationersInventory/GestionInventario_MVC/GestionInventario_MVC/Views/Reportes/Inventario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcSW52ZW50YXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/EMMANUEL/source/repos/Emmanuel99999/StationersInventory/GestionInventario_MVC/GestionInventario_MVC/Views/Reportes/Ventas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcVmVudGFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/EMMANUEL/source/repos/Emmanuel99999/StationersInventory/GestionInventario_MVC/GestionInventario_MVC/Views/Roles/Create.cshtml]

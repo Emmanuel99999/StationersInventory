@@ -388,4 +388,3 @@ C:\Users\EMMANUEL\source\repos\Emmanuel99999\StationersInventory\GestionInventar
 C:\Users\EMMANUEL\source\repos\Emmanuel99999\StationersInventory\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.pdb
 C:\Users\EMMANUEL\source\repos\Emmanuel99999\StationersInventory\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\GestionInventario_MVC.genruntimeconfig.cache
 C:\Users\EMMANUEL\source\repos\Emmanuel99999\StationersInventory\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\ref\GestionInventario_MVC.dll
-C:\Users\EMMANUEL\source\repos\Emmanuel99999\StationersInventory\GestionInventario_MVC\GestionInventario_MVC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

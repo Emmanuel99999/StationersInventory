@@ -1,0 +1,29 @@
+@model IEnumerable<GestionInventario_MVC.Models.ProductoMasVendido>
+
+@{
+    ViewData["Title"] = "Productos Más Vendidos";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Cantidad Vendida</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prod in Model)
+        {
+            <tr>
+                <td>@prod.Id</td>
+                <td>@prod.Nombre</td>
+                <td>@prod.Categoria</td>
+                <td>@prod.CantidadVendida</td>
+            </tr>
+        }
+    </tbody>
+</table>
